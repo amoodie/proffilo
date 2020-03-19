@@ -86,8 +86,8 @@ class Distribution(object):
     def d(self, x, units='microns'):
         assert x >= 0 and x <= 100, 'x must be in [0, 100], but was %s' % str(x)
         assert units == 'microns', 'NotImplemented for units other than microns'
-        _val = np.interp(x, self.bin, self.cumulative_dist)
-        #utils.coerce_to_unit()
+        _val = np.interp(x, self.cumulative_dist, self.bin)
+        # utils.coerce_to_unit()
         return  _val
 
 
