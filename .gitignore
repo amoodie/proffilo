@@ -122,5 +122,5 @@ build_deploy.sh
 # test results
 tests/results/
 
-scripts/
+temp/
 playground*
