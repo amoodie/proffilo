@@ -66,6 +66,7 @@ class Distribution(object):
         if self._units in ['microns', 'micron', 'mum', '\mum', 'mu m']:
             self.display_units = '$\mu$m'
         elif self._units in ['phi', '\phi']:
+            raise NotImplementedError('Other units not functional. Submit a PR!')
             self.display_units = '$\phi$'
 
 
@@ -82,6 +83,14 @@ class Distribution(object):
         return str(self.data)
 
         
+    def d(self, x, units='microns'):
+        assert x >= 0 and x <= 100, 'x must be in [0, 100], but was %s' % str(x)
+        assert units == 'microns', 'NotImplemented for units other than microns'
+        _val = np.interp(x, self.bin, self.cumulative_dist)
+        #utils.coerce_to_unit()
+        return  _val
+
+
     def _mpl_check(self):
         if isinstance(plt, ImportError):
             raise plt
@@ -106,4 +115,6 @@ class Distribution(object):
         ax.set_ylabel(ylab)
         if savestr:
             fig.savefig(savestr)
-        plt.show(block=block)
+            plt.show(block=block)
+        else:
+            plt.show()

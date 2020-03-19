@@ -1,7 +1,14 @@
 import numpy as np
 
+try:
+    import matplotlib.pyplot as plt # Optional dependency
+except ImportError as e:
+    plt = e
+
+
 from .distribution import Distribution
 from . import entrain
+from . import profile
 
 
 class Station(object):
@@ -17,10 +24,7 @@ class Station(object):
         self.ustar = ustar
         self.slope = slope
         self.nearbed_concentration = nearbed_concentration
-        # self.velocity_profiles = []
-
-        # self.set_z()
-        # self._z = 50
+        self.velocity_profiles = {}
 
 
     @property
@@ -50,9 +54,22 @@ class Station(object):
 
     @flow_depth.setter
     def flow_depth(self, var):
-        self._flow_depth = var
-        if self.flow_depth:
-            self._z = 50
+        _var, _units = self._unit_stripper(var)
+        self._flow_depth = _var
+        # self._flow_depth_units = _units
+        if self._flow_depth:
+            self.z = np.linspace(0, self._flow_depth, num=50)
+
+    # @property
+    # def flow_depth_units(self):
+    #     return self._flow_depth_units
+
+    # @flow_depth_units.setter
+    # def flow_depth_units(self, var, default='meters'):
+    #     if var:
+    #        self._flow_depth_units = var
+    #     else:
+    #         self._flow_depth_units = default
 
 
     @property
@@ -77,14 +94,10 @@ class Station(object):
     def z(self):
         return self._z
 
-    @property
-    def _z(self):
-        return self._z
-
-    @_z.setter
-    def _z(self, nz=50):
+    @z.setter
+    def z(self, var):
         _att_dict = self.attribute_checker(['flow_depth'])
-        self._z = np.linspace(0, self.flow_depth, nz)
+        self._z = var
 
 
     @property
@@ -99,6 +112,13 @@ class Station(object):
             self._nearbed_concentration = var
         else:
             self._nearbed_concentration = None
+
+
+    def _unit_stripper(self, var):
+        if type(var) is list:
+            return var[0], var[1]
+        else:
+            return var, None
 
 
     def attribute_checker(self, checklist):
@@ -117,8 +137,18 @@ class Station(object):
             raise RuntimeError('Required attribute(s) not assigned: '+str(log_form))
         return att_dict
 
-    def compute_velocity_profile(self, formula='loglaw'):
-        pass
+
+    def compute_velocity_profile(self, formula='loglaw', storestr=None, **kwargs):
+        if formula in ['loglaw', 'lotw', 'lawofthewall']:
+            _att_dict = self.attribute_checker(['flow_depth', 'z', 'ustar'])
+            _z0 = profile.velocity_roughness_z0(self.bed_distribution.d(90, units='microns')*1e-6) # hardcoded for microns!
+            _vel = profile.velocity_loglaw(self.z, _z0, self.ustar, alpha=1)
+            if not storestr:
+                storestr = 'loglaw'
+        else:
+            raise ValueError('Invalid velocity formula provided: %s.' % formula)
+
+        self.velocity_profiles[storestr] = [_vel, kwargs]
 
 
     def compute_entrainment_from_bed(self, formula='wright_parker', replace=False):
@@ -132,3 +162,31 @@ class Station(object):
             entrain.wright_parker()
         else:
             raise ValueError('Invalid entrainment formula provided: %s.' % formula)
+
+
+    def _mpl_check(self):
+        if isinstance(plt, ImportError):
+            raise plt
+
+    def show_velocity(self, block=False, savestr=None, **kwargs):
+        """
+        Show the distribution
+        """
+        self._mpl_check()
+
+        xlab = kwargs.pop('xlabel', 'velocity ('+'m/s'+')')
+        ylab = kwargs.pop('ylabel', 'depth ('+'m'+')')
+        
+        fig, ax = plt.subplots()
+        for v, prof in enumerate(self.velocity_profiles):
+            _prof = self.velocity_profiles[prof]
+            ax.plot(_prof[0], self.z, **_prof[1])    
+        
+        ax.legend(self.velocity_profiles.keys())
+        ax.set_xlabel(xlab)
+        ax.set_ylabel(ylab)
+        if savestr:
+            fig.savefig(savestr)
+            plt.show(block=block)
+        else:
+            plt.show()
