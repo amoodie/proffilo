@@ -11,8 +11,6 @@ os:
 
 install:
   - pip install -r requirements.txt
-  # - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
-  # - pip install travis-sphinx
 
 
 script:
@@ -21,19 +19,13 @@ script:
 
 jobs:
   include:
-    - stage: deploy
-        python: 3.8
-        install: 
-          - pip install -r requirements.txt
-          - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
-        script:
-          - pytest
-          - (cd docs && make html)
-        deploy:
-          provider: pages:git
-          github_token: $GITHUB_TOKEN
-          verbose: true
-          edge: true
-          local-dir: docs/build/html
-          on:
-          branch: master
+    - stage: deploydocs
+      python: "3.8"
+      install: pip install -r requirements.txt Sphinx sphinx-rtd-theme sphinx-automodapi
+      script: (cd docs && make html)
+      deploy:
+        provider: pages:git
+        github_token: $GITHUB_TOKEN
+        verbose: true
+        edge: true
+        local-dir: docs/build/html
