@@ -17,7 +17,7 @@ install:
 
 script:
   - pytest
-  - travis-sphinx build
+  - travis-sphinx build -n
 
 
 # before_deploy:
