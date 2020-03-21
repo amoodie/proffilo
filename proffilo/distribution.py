@@ -7,9 +7,47 @@ except ImportError as e:
 
 
 class Distribution(object):
-    """
+    """Grain-size distibution.
+
+    Grain-size distribution class. Provides convenient organization and
+    features, such as summarizing, or plotting.
+
+    Attributes
+    ----------
+    bin : `ndarray`
+        Grain-size bins characterizing the grain-size distribution.
+    dist : `ndarray`
+        Percentage of grain-size distribution in each bin.
+    units : `str`
+        Units of grain size [:math:mu m]
+    cumulative_dist : `ndarray`
+        Cumulative percentage of grain-size distribution along bins. 
+
     """
     def __init__(self, arr, units='microns'):
+        """Example of docstring on the __init__ method.
+
+        The __init__ method may be documented in either the class level
+        docstring, or as a docstring on the __init__ method itself.
+
+        Either form is acceptable, but the two should not be mixed. Choose one
+        convention to document the __init__ method and be consistent with it.
+
+        Note
+        ----
+        Do not include the `self` parameter in the ``Parameters`` section.
+
+        Parameters
+        ----------
+        param1 : str
+            Description of `param1`.
+        param2 : list(str)
+            Description of `param2`. Multiple
+            lines are supported.
+        param3 : :obj:`int`, optional
+            Description of `param3`.
+
+        """
         self.data = arr
         self.bin = self.data[:,0]
         self.dist = self.data[:,1]
@@ -19,6 +57,10 @@ class Distribution(object):
 
     @property
     def data(self):
+        """
+        Properties created with the ``@property`` decorator should be documented
+        in the property's getter method.
+        """
         return self._data
 
     @data.setter
@@ -63,11 +105,11 @@ class Distribution(object):
         if type(var) is list:
             var = np.array(var)
         self._units = var
-        if self._units in ['microns', 'micron', 'mum', '\mum', 'mu m']:
-            self.display_units = '$\mu$m'
-        elif self._units in ['phi', '\phi']:
+        if self._units in ['microns', 'micron', 'mum', r'\mum', 'mu m']:
+            self.display_units = r'$\mu$m'
+        elif self._units in ['phi', r'\phi']:
             raise NotImplementedError('Other units not functional. Submit a PR!')
-            self.display_units = '$\phi$'
+            self.display_units = r'$\phi$'
 
 
     @property

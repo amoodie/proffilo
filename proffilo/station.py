@@ -1,3 +1,5 @@
+__all__ = ['Station']
+
 import numpy as np
 
 try:
@@ -13,6 +15,7 @@ from . import profile
 
 class Station(object):
     """
+    a
     """
     def __init__(self, ID, bed_distribution=None, flow_depth=None, ustar=None, 
                  slope=None, 
