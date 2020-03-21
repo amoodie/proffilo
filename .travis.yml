@@ -21,6 +21,7 @@ before_deploy:
 deploy:
   - (cd docs/ && make html)
   provider: pages:git
+  verbose: true
   token: $GITHUB_TOKEN
   cleanup: false
   skip_cleanup: true
