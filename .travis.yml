@@ -11,7 +11,8 @@ os:
 
 install:
   - pip install -r requirements.txt
-  - pip install --user travis-sphinx
+  - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
+  - pip install travis-sphinx
 
 
 script:
@@ -34,4 +35,4 @@ script:
 
 
 after_success:
-  - travis-sphinx deploy
+  - travis-sphinx deploy --branches=master
