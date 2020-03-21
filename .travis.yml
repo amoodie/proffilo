@@ -22,6 +22,7 @@ before_deploy:
 deploy:
   provider: pages:git
   token: $GITHUB_TOKEN
+  cleanup: false
   on:
     branch: master
   edge: true
