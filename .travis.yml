@@ -16,7 +16,7 @@ script:
   - pytest
 
 before_deploy:
-  - pip install Sphinx sphinx-rtd-theme
+  - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
   - (cd docs/ && make html)
 
 deploy:
