@@ -17,12 +17,13 @@ script:
 
 before_deploy:
   - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
-  - (cd docs/ && make html)
 
 deploy:
+  - (cd docs/ && make html)
   provider: pages:git
   token: $GITHUB_TOKEN
   cleanup: false
+  skip_cleanup: true
   on:
     branch: master
   edge: true
