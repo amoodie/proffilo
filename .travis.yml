@@ -5,34 +5,35 @@ python:
   - "3.7"
   - "3.8"
 
+
 os:
   - linux
   # - osx
 
+
 install:
   - pip install -r requirements.txt
-  - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
-  # - pip install travis-sphinx
 
 
 script:
   - pytest
-  # - travis-sphinx build -n
 
+jobs:
+  include:
+    - stage: deploy
+        python: 3.8
+        install: 
+          - pip install -r requirements.txt
+          - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
+        script:
+          - pytest
+          - (cd docs && make html)
+        deploy:
+          on:
+            branch: master
+          verbose: true
+          provider: pages:git
+          token: $GITHUB_TOKEN
+          local-dir: docs/build/html
+          edge: true
 
-before_deploy:
-  - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
-  - (cd docs && make html)
-
-deploy:
-  on:
-    branch: master
-  verbose: true
-  provider: pages:git
-  token: $GITHUB_TOKEN
-  local-dir: docs/build/html
-  edge: true
-
-
-# after_success:
-#   - travis-sphinx deploy --branches=master
