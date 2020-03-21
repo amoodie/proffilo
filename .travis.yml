@@ -12,27 +12,27 @@ os:
 install:
   - pip install -r requirements.txt
   - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
-  - pip install travis-sphinx
+  # - pip install travis-sphinx
 
 
 script:
   - pytest
-  - travis-sphinx build -n
+  # - travis-sphinx build -n
 
 
-# before_deploy:
-#   - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
-#   - (cd docs/ && make html)
+before_deploy:
+  - pip install Sphinx sphinx-rtd-theme sphinx-automodapi
+  - (cd docs && make html)
 
-# deploy:
-#   on:
-#     branch: master
-#   cleanup: false
-#   verbose: true
-#   provider: pages:git
-#   token: $GITHUB_TOKEN
-#   edge: true
+deploy:
+  on:
+    branch: master
+  verbose: true
+  provider: pages:git
+  token: $GITHUB_TOKEN
+  local-dir: docs/build/html
+  edge: true
 
 
-after_success:
-  - travis-sphinx deploy --branches=master
+# after_success:
+#   - travis-sphinx deploy --branches=master
