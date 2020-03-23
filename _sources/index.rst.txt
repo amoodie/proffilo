@@ -6,18 +6,27 @@
 .. include:: ../../README.rst
 
 
+
+
+Welcome to the Proffilo documentation
+=====================================
+
 .. toctree::
-   :caption: Proffilo
    :maxdepth: 1
 
-   installing
-   contributing
-   license
-   conduct
+   meta/installing
+   meta/contributing
+   meta/license
+   meta/conduct
 
+
+Documentation Outline
+=====================
 
 .. toctree::
-    :maxdepth: 3
-    :caption: Documentation
+   :maxdepth: 2
 
-    documentation
+   reference/getting_started
+   reference/userguide
+   reference/index
+
