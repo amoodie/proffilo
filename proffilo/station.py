@@ -11,6 +11,8 @@ except ImportError as e:
 from .distribution import Distribution
 from . import entrain
 from . import profile
+from . import velocity
+from . import concentration
 
 
 class Station(object):
@@ -26,7 +28,7 @@ class Station(object):
     ID : `str`
         Identification string for the survey station, should be a unique identifier.
     
-    bed_distribution : :obj:Distribution
+    bed_distribution : :obj:`proffilo.distribution.Distribution`
         Grain size distribution for bed material.
     
     flow_depth : `float`
@@ -47,6 +49,13 @@ class Station(object):
     Methods
     -------
 
+    See Also
+    --------
+
+    Examples
+    --------
+    >>> stn = pf.Station(ID='YR0094')
+    
     """
     def __init__(self, ID, bed_distribution=None, flow_depth=None, ustar=None, 
                  slope=None, 
@@ -181,9 +190,10 @@ class Station(object):
 
     def compute_velocity_profile(self, formula='loglaw', storestr=None, **kwargs):
         if formula in ['loglaw', 'lotw', 'lawofthewall']:
+            _alpha = kwargs.pop('alpha', 1.0)
             _att_dict = self.attribute_checker(['flow_depth', 'z', 'ustar'])
-            _z0 = profile.compute_roughness_z0(self.bed_distribution.d(90, units='microns')*1e-6) # hardcoded for microns!
-            _vel = profile.velocity_loglaw(self.z, _z0, self.ustar, alpha=1)
+            _z0 = velocity.compute_roughness_z0(self.bed_distribution.d(90, units='microns')*1e-6) # hardcoded for microns!
+            _vel = profile.velocity_loglaw(self.z, _z0, self.ustar, alpha=_alpha)
             if not storestr:
                 storestr = 'loglaw'
         else:

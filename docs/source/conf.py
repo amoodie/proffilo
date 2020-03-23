@@ -19,7 +19,7 @@ import proffilo as pf
 
 # -- Project information -----------------------------------------------------
 
-project = 'proffilo'
+project = 'Proffilo'
 copyright = '2020, Andrew J. Moodie'
 author = 'Andrew J. Moodie'
 
@@ -74,7 +74,7 @@ automodapi_inheritance_diagram = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinxdoc'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
