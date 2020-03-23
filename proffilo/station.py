@@ -14,8 +14,39 @@ from . import profile
 
 
 class Station(object):
-    """
-    a
+    """Survey station entity.
+
+    Survey station class. Provides organization to other objects that are
+    related to the survey station. Many object can be initialized from
+    `Station` methods, or by assignment (see examples below). Additionally
+    provides a number of helpful plotting and visualization functions.
+
+    Attributes
+    ----------
+    ID : `str`
+        Identification string for the survey station, should be a unique identifier.
+    
+    bed_distribution : :obj:Distribution
+        Grain size distribution for bed material.
+    
+    flow_depth : `float`
+        Flow depth at the station [m].
+    
+    ustar : `float`
+        Shear velocity [m/s].
+
+    slope : `float`
+        Water surface slope [-].
+
+    nearbed_concentration : `float`
+        Shear velocity [m/s]
+
+    ustar : `float`
+        Shear velocity [m/s]
+
+    Methods
+    -------
+
     """
     def __init__(self, ID, bed_distribution=None, flow_depth=None, ustar=None, 
                  slope=None, 
@@ -27,11 +58,14 @@ class Station(object):
         self.ustar = ustar
         self.slope = slope
         self.nearbed_concentration = nearbed_concentration
-        self.velocity_profiles = {}
+        self._velocity_profiles = {}
 
 
     @property
     def ID(self):
+        """
+        Identification string, should be unique to the station.
+        """
         return self._ID
 
     @ID.setter
@@ -41,6 +75,10 @@ class Station(object):
 
     @property
     def bed_distribution(self):
+        """
+        Properties created with the ``@property`` decorator should be documented
+        in the property's getter method.
+        """
         return self._bed_distribution
 
     @bed_distribution.setter
@@ -144,14 +182,14 @@ class Station(object):
     def compute_velocity_profile(self, formula='loglaw', storestr=None, **kwargs):
         if formula in ['loglaw', 'lotw', 'lawofthewall']:
             _att_dict = self.attribute_checker(['flow_depth', 'z', 'ustar'])
-            _z0 = profile.velocity_roughness_z0(self.bed_distribution.d(90, units='microns')*1e-6) # hardcoded for microns!
+            _z0 = profile.compute_roughness_z0(self.bed_distribution.d(90, units='microns')*1e-6) # hardcoded for microns!
             _vel = profile.velocity_loglaw(self.z, _z0, self.ustar, alpha=1)
             if not storestr:
                 storestr = 'loglaw'
         else:
             raise ValueError('Invalid velocity formula provided: %s.' % formula)
 
-        self.velocity_profiles[storestr] = [_vel, kwargs]
+        self._velocity_profiles[storestr] = [_vel, kwargs]
 
 
     def compute_entrainment_from_bed(self, formula='wright_parker', replace=False):
@@ -181,11 +219,11 @@ class Station(object):
         ylab = kwargs.pop('ylabel', 'depth ('+'m'+')')
         
         fig, ax = plt.subplots()
-        for v, prof in enumerate(self.velocity_profiles):
-            _prof = self.velocity_profiles[prof]
+        for v, prof in enumerate(self._velocity_profiles):
+            _prof = self._velocity_profiles[prof]
             ax.plot(_prof[0], self.z, **_prof[1])    
         
-        ax.legend(self.velocity_profiles.keys())
+        ax.legend(self._velocity_profiles.keys())
         ax.set_xlabel(xlab)
         ax.set_ylabel(ylab)
         if savestr:

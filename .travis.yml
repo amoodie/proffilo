@@ -21,7 +21,7 @@ jobs:
   include:
     - stage: deploydocs
       python: "3.8"
-      install: pip install -r requirements.txt Sphinx sphinx-rtd-theme sphinx-automodapi
+      install: pip install -r requirements.txt requirements_docs.txt
       script: (cd docs && make html)
       deploy:
         provider: pages:git
@@ -29,3 +29,5 @@ jobs:
         verbose: true
         edge: true
         local-dir: docs/build/html
+        on:
+          branch: master

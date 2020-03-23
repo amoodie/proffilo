@@ -19,7 +19,7 @@ class Distribution(object):
     dist : `ndarray`
         Percentage of grain-size distribution in each bin.
     units : `str`
-        Units of grain size [:math:mu m]
+        Units of grain size [:math:`\mu` m]
     cumulative_dist : `ndarray`
         Cumulative percentage of grain-size distribution along bins. 
 
