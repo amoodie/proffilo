@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started &mdash; proffilo 0.1 documentation</title>
+  <title>Getting started &mdash; proffilo 0.1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Station" href="api/proffilo.station.Station.html" />
-    <link rel="prev" title="License" href="license.html" /> 
+    <link rel="next" title="proffilo.station.Station" href="_autosummary/proffilo.station.Station.html" />
+    <link rel="prev" title="Code of Conduct" href="conduct.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,6 +60,10 @@
 
           
             
+            
+              <div class="version">
+                0.1.0
+              </div>
             
           
 
@@ -87,36 +91,49 @@
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conduct.html">Code of Conduct</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#object-based-api">Object-based API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-proffilo.station">Station</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="api/proffilo.station.Station.html">Station</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#station">station</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.station.Station.html">proffilo.station.Station</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#distribution">distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.distribution.Distribution.html">proffilo.distribution.Distribution</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-proffilo.distribution">Distribution</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="api/proffilo.distribution.Distribution.html">Distribution</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#profile">profile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.profile.LogLawProfile.html">proffilo.profile.LogLawProfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.profile.RouseProfile.html">proffilo.profile.RouseProfile</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#operations">Operations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-proffilo.profile">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="api/proffilo.profile.velocity_loglaw.html">velocity_loglaw</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/proffilo.profile.velocity_roughness_z0.html">velocity_roughness_z0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#velocity-computations">Velocity computations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.velocity.compute_roughness_z0.html">proffilo.velocity.compute_roughness_z0</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="api/proffilo.entrain.wright_parker.html">wright_parker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concentration-computations">Concentration computations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.concentration.convert_to_mass_concentration.html">proffilo.concentration.convert_to_mass_concentration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#entrainment-computations">Entrainment computations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.entrain.wright_parker.html">proffilo.entrain.wright_parker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#settling-computations">Settling computations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.settle.dietrich.html">proffilo.settle.dietrich</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/proffilo.settle.ferguson_church.html">proffilo.settle.ferguson_church</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-proffilo.utils">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/proffilo.utils.format_number.html">format_number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/proffilo.utils.format_table.html">format_table</a></li>
 </ul>
 </li>
 </ul>
@@ -188,33 +205,29 @@
            <div itemprop="articleBody">
             
   <div class="section" id="getting-started">
-<h1><a class="toc-backref" href="#id4">Getting started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">Getting started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Welcome to the Proffilo documentation.</p>
 <p>This section gives a learn-by-example lesson on how to use Proffilo.</p>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#getting-started" id="id4">Getting started</a></p></li>
-<li><p><a class="reference internal" href="#object-based-api" id="id5">Object-based API</a></p>
+<li><p><a class="reference internal" href="#getting-started" id="id1">Getting started</a></p></li>
+<li><p><a class="reference internal" href="#object-based-api" id="id2">Object-based API</a></p>
 <ul>
-<li><p><a class="reference internal" href="#module-proffilo.station" id="id6">Station</a></p>
-<ul>
-<li><p><a class="reference internal" href="#classes" id="id7">Classes</a></p></li>
+<li><p><a class="reference internal" href="#station" id="id3">station</a></p></li>
+<li><p><a class="reference internal" href="#distribution" id="id4">distribution</a></p></li>
+<li><p><a class="reference internal" href="#profile" id="id5">profile</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#module-proffilo.distribution" id="id8">Distribution</a></p>
+<li><p><a class="reference internal" href="#operations" id="id6">Operations</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id9">Classes</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#operations" id="id10">Operations</a></p>
+<li><p><a class="reference internal" href="#velocity-computations" id="id7">Velocity computations</a></p></li>
+<li><p><a class="reference internal" href="#concentration-computations" id="id8">Concentration computations</a></p></li>
+<li><p><a class="reference internal" href="#entrainment-computations" id="id9">Entrainment computations</a></p></li>
+<li><p><a class="reference internal" href="#settling-computations" id="id10">Settling computations</a></p></li>
+<li><p><a class="reference internal" href="#module-proffilo.utils" id="id11">Utilities</a></p>
 <ul>
-<li><p><a class="reference internal" href="#module-proffilo.profile" id="id11">Functions</a></p>
-<ul>
-<li><p><a class="reference internal" href="#id2" id="id12">Functions</a></p></li>
-<li><p><a class="reference internal" href="#id3" id="id13">Functions</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id12">Functions</a></p></li>
 </ul>
 </li>
 </ul>
@@ -223,73 +236,129 @@
 </div>
 </div>
 <div class="section" id="object-based-api">
-<h1><a class="toc-backref" href="#id5">Object-based API</a><a class="headerlink" href="#object-based-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-proffilo.station">
-<span id="station"></span><h2><a class="toc-backref" href="#id6">Station</a><a class="headerlink" href="#module-proffilo.station" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="classes">
-<h3><a class="toc-backref" href="#id7">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<h1><a class="toc-backref" href="#id2">Object-based API</a><a class="headerlink" href="#object-based-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="station">
+<h2><a class="toc-backref" href="#id3">station</a><a class="headerlink" href="#station" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/proffilo.station.Station.html#proffilo.station.Station" title="proffilo.station.Station"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Station</span></code></a>(ID[, bed_distribution, flow_depth, …])</p></td>
-<td><p>a</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/proffilo.station.Station.html#proffilo.station.Station" title="proffilo.station.Station"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Station</span></code></a>(ID[, bed_distribution, flow_depth, …])</p></td>
+<td><p>Survey station entity.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="module-proffilo.distribution">
-<span id="distribution"></span><h2><a class="toc-backref" href="#id8">Distribution</a><a class="headerlink" href="#module-proffilo.distribution" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3><a class="toc-backref" href="#id9">Classes</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="distribution">
+<h2><a class="toc-backref" href="#id4">distribution</a><a class="headerlink" href="#distribution" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/proffilo.distribution.Distribution.html#proffilo.distribution.Distribution" title="proffilo.distribution.Distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Distribution</span></code></a>(arr[, units])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/proffilo.distribution.Distribution.html#proffilo.distribution.Distribution" title="proffilo.distribution.Distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Distribution</span></code></a>(arr[, units])</p></td>
 <td><p>Grain-size distibution.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="section" id="operations">
-<h1><a class="toc-backref" href="#id10">Operations</a><a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-proffilo.profile">
-<span id="functions"></span><h2><a class="toc-backref" href="#id11">Functions</a><a class="headerlink" href="#module-proffilo.profile" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#id12">Functions</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="profile">
+<h2><a class="toc-backref" href="#id5">profile</a><a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/proffilo.profile.velocity_loglaw.html#proffilo.profile.velocity_loglaw" title="proffilo.profile.velocity_loglaw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">velocity_loglaw</span></code></a>(z, z0, ustar[, alpha])</p></td>
-<td><p>Compute velocity profile following the log-law (Law of the Wall) velocity profile.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/proffilo.profile.LogLawProfile.html#proffilo.profile.LogLawProfile" title="proffilo.profile.LogLawProfile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogLawProfile</span></code></a>()</p></td>
+<td><p>a</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/proffilo.profile.velocity_roughness_z0.html#proffilo.profile.velocity_roughness_z0" title="proffilo.profile.velocity_roughness_z0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">velocity_roughness_z0</span></code></a>(d90)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/proffilo.profile.RouseProfile.html#proffilo.profile.RouseProfile" title="proffilo.profile.RouseProfile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RouseProfile</span></code></a>()</p></td>
+<td><p>Docstring</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="operations">
+<h1><a class="toc-backref" href="#id6">Operations</a><a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="velocity-computations">
+<h2><a class="toc-backref" href="#id7">Velocity computations</a><a class="headerlink" href="#velocity-computations" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/proffilo.velocity.compute_roughness_z0.html#proffilo.velocity.compute_roughness_z0" title="proffilo.velocity.compute_roughness_z0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_roughness_z0</span></code></a>(d90)</p></td>
 <td><p>Compute roughness <span class="math notranslate nohighlight">\(z0\)</span> for velocity profile.</p></td>
 </tr>
 </tbody>
 </table>
-<span class="target" id="module-proffilo.entrain"></span></div>
-<div class="section" id="id3">
-<h3><a class="toc-backref" href="#id13">Functions</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="concentration-computations">
+<h2><a class="toc-backref" href="#id8">Concentration computations</a><a class="headerlink" href="#concentration-computations" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/proffilo.entrain.wright_parker.html#proffilo.entrain.wright_parker" title="proffilo.entrain.wright_parker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wright_parker</span></code></a>(ustarsk)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/proffilo.concentration.convert_to_mass_concentration.html#proffilo.concentration.convert_to_mass_concentration" title="proffilo.concentration.convert_to_mass_concentration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_to_mass_concentration</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="entrainment-computations">
+<h2><a class="toc-backref" href="#id9">Entrainment computations</a><a class="headerlink" href="#entrainment-computations" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/proffilo.entrain.wright_parker.html#proffilo.entrain.wright_parker" title="proffilo.entrain.wright_parker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wright_parker</span></code></a>(ustarsk)</p></td>
 <td><p>Compute entrainment by Wright and Parker 2004 formula</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="settling-computations">
+<h2><a class="toc-backref" href="#id10">Settling computations</a><a class="headerlink" href="#settling-computations" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_autosummary/proffilo.settle.dietrich.html#proffilo.settle.dietrich" title="proffilo.settle.dietrich"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dietrich</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="_autosummary/proffilo.settle.ferguson_church.html#proffilo.settle.ferguson_church" title="proffilo.settle.ferguson_church"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ferguson_church</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-proffilo.utils">
+<span id="utilities"></span><h2><a class="toc-backref" href="#id11">Utilities</a><a class="headerlink" href="#module-proffilo.utils" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3><a class="toc-backref" href="#id12">Functions</a><a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/proffilo.utils.format_number.html#proffilo.utils.format_number" title="proffilo.utils.format_number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_number</span></code></a>(number)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/proffilo.utils.format_table.html#proffilo.utils.format_table" title="proffilo.utils.format_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_table</span></code></a>(number)</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -305,10 +374,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="api/proffilo.station.Station.html" class="btn btn-neutral float-right" title="Station" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="_autosummary/proffilo.station.Station.html" class="btn btn-neutral float-right" title="proffilo.station.Station" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="license.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="conduct.html" class="btn btn-neutral float-left" title="Code of Conduct" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>velocity_loglaw &mdash; proffilo 0.1 documentation</title>
+  <title>proffilo.profile.RouseProfile &mdash; proffilo 0.1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="velocity_roughness_z0" href="proffilo.profile.velocity_roughness_z0.html" />
-    <link rel="prev" title="Distribution" href="proffilo.distribution.Distribution.html" /> 
+    <link rel="next" title="proffilo.velocity.compute_roughness_z0" href="proffilo.velocity.compute_roughness_z0.html" />
+    <link rel="prev" title="proffilo.profile.LogLawProfile" href="proffilo.profile.LogLawProfile.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,6 +60,10 @@
 
           
             
+            
+              <div class="version">
+                0.1.0
+              </div>
             
           
 
@@ -87,23 +91,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../documentation.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../documentation.html#object-based-api">Object-based API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html#operations">Operations</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-proffilo.profile">Functions</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../documentation.html#id2">Functions</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">velocity_loglaw</a></li>
-<li class="toctree-l4"><a class="reference internal" href="proffilo.profile.velocity_roughness_z0.html">velocity_roughness_z0</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../documentation.html#id3">Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../documentation.html#object-based-api">Object-based API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#station">station</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#distribution">distribution</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#profile">profile</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="proffilo.profile.LogLawProfile.html">proffilo.profile.LogLawProfile</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">proffilo.profile.RouseProfile</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation.html#operations">Operations</a></li>
 </ul>
 
             
@@ -151,13 +154,13 @@
         
           <li><a href="../documentation.html">Getting started</a> &raquo;</li>
         
-      <li>velocity_loglaw</li>
+      <li>proffilo.profile.RouseProfile</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/proffilo.profile.velocity_loglaw.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/_autosummary/proffilo.profile.RouseProfile.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,26 +173,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="velocity-loglaw">
-<h1>velocity_loglaw<a class="headerlink" href="#velocity-loglaw" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="proffilo.profile.velocity_loglaw">
-<code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">velocity_loglaw</code><span class="sig-paren">(</span><em class="sig-param">z</em>, <em class="sig-param">z0</em>, <em class="sig-param">ustar</em>, <em class="sig-param">alpha=1</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.velocity_loglaw" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute velocity profile following the log-law (Law of the Wall) velocity profile.</p>
-<p><a href="#id1"><span class="problematic" id="id2">:cite:`Strunk1979`</span></a></p>
-<div class="math notranslate nohighlight">
-\[z0 = ks d_{90}\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>d90</strong> (<em>float</em>) – The 90th percentile of the bed material grain-size distribution, given in meters.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The roughness height <span class="math notranslate nohighlight">\(z_0\)</span>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
+  <div class="section" id="proffilo-profile-rouseprofile">
+<h1>proffilo.profile.RouseProfile<a class="headerlink" href="#proffilo-profile-rouseprofile" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="proffilo.profile.RouseProfile">
+<em class="property">class </em><code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">RouseProfile</code><a class="headerlink" href="#proffilo.profile.RouseProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Docstring</p>
+<p>The Rouse formula is given by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>frac{{c}_i}{{c}_{bi}} = left[ frac{(H-z)/z}{(H-b)/b} right] ^{Z_{Ri}}</p>
+</div></blockquote>
+<p>And the Rouse number, given by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Z_{Ri} = frac{w_{si}}{alpha kappa u_*}</p>
+</div></blockquote>
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">Another strng.</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.RouseProfile.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.RouseProfile.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the obj</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.__init__" title="proffilo.profile.RouseProfile.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<td><p>Initialize the obj</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">concentration_rouse</span></code>(flow_depth, b, cb, Rou)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -202,10 +231,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="proffilo.profile.velocity_roughness_z0.html" class="btn btn-neutral float-right" title="velocity_roughness_z0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="proffilo.velocity.compute_roughness_z0.html" class="btn btn-neutral float-right" title="proffilo.velocity.compute_roughness_z0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="proffilo.distribution.Distribution.html" class="btn btn-neutral float-left" title="Distribution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="proffilo.profile.LogLawProfile.html" class="btn btn-neutral float-left" title="proffilo.profile.LogLawProfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

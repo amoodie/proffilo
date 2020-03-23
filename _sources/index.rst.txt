@@ -13,10 +13,11 @@
    installing
    contributing
    license
+   conduct
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     :caption: Documentation
 
     documentation

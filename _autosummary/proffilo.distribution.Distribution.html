@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Distribution &mdash; proffilo 0.1 documentation</title>
+  <title>proffilo.distribution.Distribution &mdash; proffilo 0.1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="velocity_loglaw" href="proffilo.profile.velocity_loglaw.html" />
-    <link rel="prev" title="Station" href="proffilo.station.Station.html" /> 
+    <link rel="next" title="proffilo.profile.LogLawProfile" href="proffilo.profile.LogLawProfile.html" />
+    <link rel="prev" title="proffilo.station.Station" href="proffilo.station.Station.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,6 +60,10 @@
 
           
             
+            
+              <div class="version">
+                0.1.0
+              </div>
             
           
 
@@ -87,19 +91,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../documentation.html">Getting started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../documentation.html#object-based-api">Object-based API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../documentation.html#module-proffilo.station">Station</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-proffilo.distribution">Distribution</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../documentation.html#id1">Classes</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#station">station</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#distribution">distribution</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">proffilo.distribution.Distribution</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#profile">profile</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../documentation.html#operations">Operations</a></li>
@@ -150,13 +153,13 @@
         
           <li><a href="../documentation.html">Getting started</a> &raquo;</li>
         
-      <li>Distribution</li>
+      <li>proffilo.distribution.Distribution</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/proffilo.distribution.Distribution.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/_autosummary/proffilo.distribution.Distribution.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,13 +172,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="distribution">
-<h1>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="proffilo-distribution-distribution">
+<h1>proffilo.distribution.Distribution<a class="headerlink" href="#proffilo-distribution-distribution" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="proffilo.distribution.Distribution">
 <em class="property">class </em><code class="sig-prename descclassname">proffilo.distribution.</code><code class="sig-name descname">Distribution</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">units='microns'</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Grain-size distibution.</p>
+<dd><p>Grain-size distibution.</p>
 <p>Grain-size distribution class. Provides convenient organization and
 features, such as summarizing, or plotting.</p>
 <dl class="attribute">
@@ -203,7 +205,7 @@ features, such as summarizing, or plotting.</p>
 <dl class="attribute">
 <dt id="proffilo.distribution.Distribution.units">
 <code class="sig-name descname">units</code><a class="headerlink" href="#proffilo.distribution.Distribution.units" title="Permalink to this definition">¶</a></dt>
-<dd><p>Units of grain size [:math:mu m]</p>
+<dd><p>Units of grain size [<span class="math notranslate nohighlight">\(\mu\)</span> m]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><cite>str</cite></p>
@@ -222,7 +224,49 @@ features, such as summarizing, or plotting.</p>
 </dl>
 </dd></dl>
 
-<p class="rubric">Attributes Summary</p>
+<dl class="method">
+<dt id="proffilo.distribution.Distribution.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">units='microns'</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example of docstring on the __init__ method.</p>
+<p>The __init__ method may be documented in either the class level
+docstring, or as a docstring on the __init__ method itself.</p>
+<p>Either form is acceptable, but the two should not be mixed. Choose one
+convention to document the __init__ method and be consistent with it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not include the <cite>self</cite> parameter in the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> section.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>param1</strong> (<em>str</em>) – Description of <cite>param1</cite>.</p></li>
+<li><p><strong>param2</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Description of <cite>param2</cite>. Multiple
+lines are supported.</p></li>
+<li><p><strong>param3</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – Description of <cite>param3</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.__init__" title="proffilo.distribution.Distribution.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(arr[, units])</p></td>
+<td><p>Example of docstring on the __init__ method.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">d</span></code>(x[, units])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_distribution</span></code>([cumulative, block, savestr])</p></td>
+<td><p>Show the distribution</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -235,7 +279,7 @@ features, such as summarizing, or plotting.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.cumulative_dist" title="proffilo.distribution.Distribution.cumulative_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cumulative_dist</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.data" title="proffilo.distribution.Distribution.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></p></td>
 <td><p>Properties created with the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator should be documented in the property’s getter method.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.dist" title="proffilo.distribution.Distribution.dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dist</span></code></a></p></td>
@@ -246,61 +290,6 @@ features, such as summarizing, or plotting.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Methods Summary</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.d" title="proffilo.distribution.Distribution.d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">d</span></code></a>(x[, units])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.show_distribution" title="proffilo.distribution.Distribution.show_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_distribution</span></code></a>([cumulative, block, savestr])</p></td>
-<td><p>Show the distribution</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Attributes Documentation</p>
-<dl class="attribute">
-<dt>
-<code class="sig-name descname">bin</code></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="sig-name descname">cumulative_dist</code></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.distribution.Distribution.data">
-<code class="sig-name descname">data</code><a class="headerlink" href="#proffilo.distribution.Distribution.data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Properties created with the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator should be documented
-in the property’s getter method.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="sig-name descname">dist</code></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt>
-<code class="sig-name descname">units</code></dt>
-<dd></dd></dl>
-
-<p class="rubric">Methods Documentation</p>
-<dl class="method">
-<dt id="proffilo.distribution.Distribution.d">
-<code class="sig-name descname">d</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">units='microns'</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution.d" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="proffilo.distribution.Distribution.show_distribution">
-<code class="sig-name descname">show_distribution</code><span class="sig-paren">(</span><em class="sig-param">cumulative=False</em>, <em class="sig-param">block=False</em>, <em class="sig-param">savestr=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution.show_distribution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show the distribution</p>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -313,10 +302,10 @@ in the property’s getter method.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="proffilo.profile.velocity_loglaw.html" class="btn btn-neutral float-right" title="velocity_loglaw" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="proffilo.profile.LogLawProfile.html" class="btn btn-neutral float-right" title="proffilo.profile.LogLawProfile" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="proffilo.station.Station.html" class="btn btn-neutral float-left" title="Station" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="proffilo.station.Station.html" class="btn btn-neutral float-left" title="proffilo.station.Station" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

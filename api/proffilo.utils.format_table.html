@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>velocity_roughness_z0 &mdash; proffilo 0.1 documentation</title>
+  <title>format_table &mdash; proffilo 0.1.0 documentation</title>
   
 
   
@@ -37,8 +37,7 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="wright_parker" href="proffilo.entrain.wright_parker.html" />
-    <link rel="prev" title="velocity_loglaw" href="proffilo.profile.velocity_loglaw.html" /> 
+    <link rel="prev" title="format_number" href="proffilo.utils.format_number.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,6 +59,10 @@
 
           
             
+            
+              <div class="version">
+                0.1.0
+              </div>
             
           
 
@@ -87,19 +90,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../installing.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../documentation.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../documentation.html#object-based-api">Object-based API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../documentation.html#operations">Operations</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-proffilo.profile">Functions</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../documentation.html#id2">Functions</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="proffilo.profile.velocity_loglaw.html">velocity_loglaw</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">velocity_roughness_z0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#velocity-computations">Velocity computations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#concentration-computations">Concentration computations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#entrainment-computations">Entrainment computations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation.html#settling-computations">Settling computations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../documentation.html#module-proffilo.utils">Utilities</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../documentation.html#functions">Functions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="proffilo.utils.format_number.html">format_number</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">format_table</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../documentation.html#id3">Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -151,13 +158,13 @@
         
           <li><a href="../documentation.html">Getting started</a> &raquo;</li>
         
-      <li>velocity_roughness_z0</li>
+      <li>format_table</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/proffilo.profile.velocity_roughness_z0.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/proffilo.utils.format_table.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,28 +177,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="velocity-roughness-z0">
-<h1>velocity_roughness_z0<a class="headerlink" href="#velocity-roughness-z0" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="format-table">
+<h1>format_table<a class="headerlink" href="#format-table" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="proffilo.profile.velocity_roughness_z0">
-<code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">velocity_roughness_z0</code><span class="sig-paren">(</span><em class="sig-param">d90</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.velocity_roughness_z0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute roughness <span class="math notranslate nohighlight">\(z0\)</span> for velocity profile.</p>
-<p>Computes the rougness height <span class="math notranslate nohighlight">\(z_0\)</span> for the velocity profile based on the formula:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span> <span class="n">z_0</span> <span class="o">=</span> <span class="n">k_s</span> <span class="n">d_</span><span class="p">{</span><span class="mi">90</span><span class="p">}</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>d90</strong> (<em>float</em>) – The 90th percentile of the bed material grain-size distribution, given in meters.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The roughness height <span class="math notranslate nohighlight">\(z_0\)</span>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
+<dt id="proffilo.utils.format_table">
+<code class="sig-prename descclassname">proffilo.utils.</code><code class="sig-name descname">format_table</code><span class="sig-paren">(</span><em class="sig-param">number</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.utils.format_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 
@@ -203,10 +194,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="proffilo.entrain.wright_parker.html" class="btn btn-neutral float-right" title="wright_parker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="proffilo.profile.velocity_loglaw.html" class="btn btn-neutral float-left" title="velocity_loglaw" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="proffilo.utils.format_number.html" class="btn btn-neutral float-left" title="format_number" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
