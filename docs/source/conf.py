@@ -15,6 +15,8 @@ import sys
 sys.path.insert(0, os.path.abspath('../..'))
 sys.setrecursionlimit(1500)
 
+import proffilo as pf
+
 # -- Project information -----------------------------------------------------
 
 project = 'proffilo'
@@ -22,7 +24,8 @@ copyright = '2020, Andrew J. Moodie'
 author = 'Andrew J. Moodie'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = pf.__version__
+version = pf.__version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -64,10 +67,6 @@ napoleon_use_rtype = True
 # Autosummary / Automodapi settings
 autosummary_generate = True
 automodapi_inheritance_diagram = False
-
-# exclude settings
-# exclude_patterns = ['documentation*']
-
 
 
 # -- Options for HTML output -------------------------------------------------
