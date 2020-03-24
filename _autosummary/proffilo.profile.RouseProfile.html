@@ -13,7 +13,6 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Velocity functions" href="../reference/velocity/index.html" />
@@ -97,7 +96,7 @@
 <dl class="method">
 <dt id="proffilo.profile.RouseProfile.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.RouseProfile.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize the obj</p>
+<dd><p>Initialize the Profile.</p>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -108,13 +107,61 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.__init__" title="proffilo.profile.RouseProfile.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
-<td><p>Initialize the obj</p></td>
+<td><p>Initialize the Profile.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">concentration_rouse</span></code>(flow_depth, b, cb, Rou)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.compute_values" title="proffilo.profile.RouseProfile.compute_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_values</span></code></a>()</p></td>
+<td><p>Compute values of the profile.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">concentration_rouse</span></code>(flow_depth, b, cb, Rou)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.val" title="proffilo.profile.RouseProfile.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val</span></code></a></p></td>
+<td><p>Value of profile vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.z" title="proffilo.profile.RouseProfile.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></a></p></td>
+<td><p>Vertical coordinate vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.z_norm" title="proffilo.profile.RouseProfile.z_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_norm</span></code></a></p></td>
+<td><p>Normalized vertical coordinate vector.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="proffilo.profile.RouseProfile.compute_values">
+<em class="property">abstract </em><code class="sig-name descname">compute_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.RouseProfile.compute_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute values of the profile.</p>
+<p>Must be reimplemented by subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.RouseProfile.val">
+<em class="property">abstract property </em><code class="sig-name descname">val</code><a class="headerlink" href="#proffilo.profile.RouseProfile.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of profile vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.RouseProfile.z">
+<em class="property">property </em><code class="sig-name descname">z</code><a class="headerlink" href="#proffilo.profile.RouseProfile.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertical coordinate vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.RouseProfile.z_norm">
+<em class="property">property </em><code class="sig-name descname">z_norm</code><a class="headerlink" href="#proffilo.profile.RouseProfile.z_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized vertical coordinate vector.</p>
+<p>Values are normalized into the interval [0,1], by dividing <cite>z</cite> by the
+<cite>flow_depth</cite>.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>

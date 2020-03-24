@@ -13,11 +13,10 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="proffilo.profile.RouseProfile" href="proffilo.profile.RouseProfile.html" />
-    <link rel="prev" title="Vertical profile classes" href="../reference/profile/index.html" /> 
+    <link rel="prev" title="proffilo.profile.BaseProfile" href="proffilo.profile.BaseProfile.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -29,7 +28,7 @@
           <a href="proffilo.profile.RouseProfile.html" title="proffilo.profile.RouseProfile"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../reference/profile/index.html" title="Vertical profile classes"
+          <a href="proffilo.profile.BaseProfile.html" title="proffilo.profile.BaseProfile"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
@@ -39,8 +38,8 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../reference/profile/index.html"
-                        title="previous chapter">Vertical profile classes</a></p>
+  <p class="topless"><a href="proffilo.profile.BaseProfile.html"
+                        title="previous chapter">proffilo.profile.BaseProfile</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="proffilo.profile.RouseProfile.html"
                         title="next chapter">proffilo.profile.RouseProfile</a></p>
@@ -73,11 +72,16 @@
 <h1>proffilo.profile.LogLawProfile<a class="headerlink" href="#proffilo-profile-loglawprofile" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="proffilo.profile.LogLawProfile">
-<em class="property">class </em><code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">LogLawProfile</code><a class="headerlink" href="#proffilo.profile.LogLawProfile" title="Permalink to this definition">¶</a></dt>
-<dd><p>a</p>
+<em class="property">class </em><code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">LogLawProfile</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0</em>, <em class="sig-param">ustar</em>, <em class="sig-param">alpha=1</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log-law velocity profile model</p>
+<p>Log-law velocity profile model, defined by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span> \<span class="n">frac</span><span class="p">{</span><span class="n">u</span><span class="p">}{</span><span class="n">u_</span><span class="o">*</span><span class="p">}</span> <span class="o">=</span> \<span class="n">frac</span><span class="p">{</span><span class="mi">1</span><span class="p">}{</span>\<span class="n">alpha</span> \<span class="n">kappa</span><span class="p">}</span> \<span class="n">ln</span> \<span class="n">left</span><span class="p">(</span> <span class="mi">30</span> \<span class="n">frac</span><span class="p">{</span><span class="n">z</span><span class="p">}{</span><span class="n">k_s</span><span class="p">}</span> \<span class="n">right</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Also known as the Law-of-the-wall.</p>
 <dl class="method">
 <dt id="proffilo.profile.LogLawProfile.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0</em>, <em class="sig-param">ustar</em>, <em class="sig-param">alpha=1</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>a</p>
 </dd></dl>
 
@@ -88,14 +92,59 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.__init__" title="proffilo.profile.LogLawProfile.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.__init__" title="proffilo.profile.LogLawProfile.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(flow_depth, z0, ustar[, alpha, nz])</p></td>
 <td><p>a</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_velocity_loglaw</span></code>(z0, ustar[, alpha])</p></td>
-<td><p>Compute velocity profile following the log-law (Law of the Wall) velocity profile.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.compute_values" title="proffilo.profile.LogLawProfile.compute_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_values</span></code></a>()</p></td>
+<td><p>Compute velocity profile.</p></td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.val" title="proffilo.profile.LogLawProfile.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val</span></code></a></p></td>
+<td><p>Value of profile vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.z" title="proffilo.profile.LogLawProfile.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></a></p></td>
+<td><p>Vertical coordinate vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.z_norm" title="proffilo.profile.LogLawProfile.z_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_norm</span></code></a></p></td>
+<td><p>Normalized vertical coordinate vector.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="proffilo.profile.LogLawProfile.compute_values">
+<code class="sig-name descname">compute_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile.compute_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute velocity profile.</p>
+<p>Alias to <a class="reference internal" href="proffilo.velocity.compute_velocity_loglaw.html"><span class="doc">proffilo.velocity.compute_velocity_loglaw</span></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.LogLawProfile.val">
+<em class="property">abstract property </em><code class="sig-name descname">val</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of profile vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.LogLawProfile.z">
+<em class="property">property </em><code class="sig-name descname">z</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertical coordinate vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.LogLawProfile.z_norm">
+<em class="property">property </em><code class="sig-name descname">z_norm</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.z_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized vertical coordinate vector.</p>
+<p>Values are normalized into the interval [0,1], by dividing <cite>z</cite> by the
+<cite>flow_depth</cite>.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -116,7 +165,7 @@
           <a href="proffilo.profile.RouseProfile.html" title="proffilo.profile.RouseProfile"
              >next</a> |</li>
         <li class="right" >
-          <a href="../reference/profile/index.html" title="Vertical profile classes"
+          <a href="proffilo.profile.BaseProfile.html" title="proffilo.profile.BaseProfile"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>

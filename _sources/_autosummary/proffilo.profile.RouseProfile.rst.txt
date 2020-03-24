@@ -14,10 +14,19 @@ proffilo.profile.RouseProfile
    .. autosummary::
    
       ~RouseProfile.__init__
+      ~RouseProfile.compute_values
       ~RouseProfile.concentration_rouse
    
    
 
    
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~RouseProfile.val
+      ~RouseProfile.z
+      ~RouseProfile.z_norm
    
    

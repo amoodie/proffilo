@@ -13,7 +13,6 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Grain-size Distribution classes" href="../reference/distribution/index.html" />
@@ -176,17 +175,14 @@ provides a number of helpful plotting and visualization functions.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.__init__" title="proffilo.station.Station.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(ID[, bed_distribution, flow_depth, …])</p></td>
 <td><p>Initialize self.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">attribute_checker</span></code>(checklist)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_velocity_profile</span></code>([formula, storestr, nz])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_entrainment_from_bed</span></code>([formula, replace])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.compute_entrainment_from_bed" title="proffilo.station.Station.compute_entrainment_from_bed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_entrainment_from_bed</span></code></a>([formula, replace])</p></td>
 <td><p>if replace is true, put it into the nearbed slot, otherwise put it into a new predicted slot only</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_velocity_profile</span></code>([formula, storestr])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_velocity</span></code>([block, savestr])</p></td>
-<td><p>Show the distribution</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.station.Station.show_velocity" title="proffilo.station.Station.show_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_velocity</span></code></a>([block, savestr])</p></td>
+<td><p>Plot velocity profiles.</p></td>
 </tr>
 </tbody>
 </table>
@@ -215,11 +211,35 @@ provides a number of helpful plotting and visualization functions.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.station.Station.ustar" title="proffilo.station.Station.ustar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ustar</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
+<dl class="method">
+<dt>
+<em class="property">property </em><code class="sig-name descname">ID</code></dt>
+<dd><p>Identification string, should be unique to the station.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<em class="property">property </em><code class="sig-name descname">bed_distribution</code></dt>
+<dd><p>Properties created with the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator should be documented
+in the property’s getter method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.station.Station.compute_entrainment_from_bed">
+<code class="sig-name descname">compute_entrainment_from_bed</code><span class="sig-paren">(</span><em class="sig-param">formula='wright_parker'</em>, <em class="sig-param">replace=False</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.station.Station.compute_entrainment_from_bed" title="Permalink to this definition">¶</a></dt>
+<dd><p>if replace is true, put it into the nearbed slot,
+otherwise put it into a new predicted slot only</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.station.Station.show_velocity">
+<code class="sig-name descname">show_velocity</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">savestr=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.station.Station.show_velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot velocity profiles.</p>
+<p>Plot the velocity profiles.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>

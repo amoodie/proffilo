@@ -1,0 +1,6 @@
+proffilo.velocity.compute\_velocity\_loglaw
+===========================================
+
+.. currentmodule:: proffilo.velocity
+
+.. autofunction:: compute_velocity_loglaw

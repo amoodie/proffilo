@@ -14,10 +14,18 @@ proffilo.profile.LogLawProfile
    .. autosummary::
    
       ~LogLawProfile.__init__
-      ~LogLawProfile.compute_velocity_loglaw
+      ~LogLawProfile.compute_values
    
    
 
    
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LogLawProfile.val
+      ~LogLawProfile.z
+      ~LogLawProfile.z_norm
    
    

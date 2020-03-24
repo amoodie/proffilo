@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>proffilo.profile.BaseProfile &#8212; Proffilo 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="proffilo.profile.LogLawProfile" href="proffilo.profile.LogLawProfile.html" />
+    <link rel="prev" title="Vertical profile classes" href="../reference/profile/index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="proffilo.profile.LogLawProfile.html" title="proffilo.profile.LogLawProfile"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../reference/profile/index.html" title="Vertical profile classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/profile/index.html" accesskey="U">Vertical profile classes</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../reference/profile/index.html"
+                        title="previous chapter">Vertical profile classes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="proffilo.profile.LogLawProfile.html"
+                        title="next chapter">proffilo.profile.LogLawProfile</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/proffilo.profile.BaseProfile.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="proffilo-profile-baseprofile">
+<h1>proffilo.profile.BaseProfile<a class="headerlink" href="#proffilo-profile-baseprofile" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="proffilo.profile.BaseProfile">
+<em class="property">class </em><code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">BaseProfile</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0=0</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.BaseProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base profile class.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class should <strong>never</strong> be instantiated directly.</p>
+</div>
+<dl class="attribute">
+<dt id="proffilo.profile.BaseProfile.z">
+<code class="sig-name descname">z</code><a class="headerlink" href="#proffilo.profile.BaseProfile.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertical coordinate vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proffilo.profile.BaseProfile.z_norm">
+<code class="sig-name descname">z_norm</code><a class="headerlink" href="#proffilo.profile.BaseProfile.z_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized vertical coordinate vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.BaseProfile.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0=0</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.BaseProfile.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the Profile.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.BaseProfile.__init__" title="proffilo.profile.BaseProfile.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(flow_depth[, z0, nz])</p></td>
+<td><p>Initialize the Profile.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.BaseProfile.compute_values" title="proffilo.profile.BaseProfile.compute_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_values</span></code></a>()</p></td>
+<td><p>Compute values of the profile.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.BaseProfile.val" title="proffilo.profile.BaseProfile.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val</span></code></a></p></td>
+<td><p>Value of profile vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.BaseProfile.z" title="proffilo.profile.BaseProfile.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></a></p></td>
+<td><p>Vertical coordinate vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.BaseProfile.z_norm" title="proffilo.profile.BaseProfile.z_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_norm</span></code></a></p></td>
+<td><p>Normalized vertical coordinate vector.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="proffilo.profile.BaseProfile.compute_values">
+<em class="property">abstract </em><code class="sig-name descname">compute_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.BaseProfile.compute_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute values of the profile.</p>
+<p>Must be reimplemented by subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.BaseProfile.val">
+<em class="property">abstract property </em><code class="sig-name descname">val</code><a class="headerlink" href="#proffilo.profile.BaseProfile.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of profile vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<em class="property">property </em><code class="sig-name descname">z</code></dt>
+<dd><p>Vertical coordinate vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<em class="property">property </em><code class="sig-name descname">z_norm</code></dt>
+<dd><p>Normalized vertical coordinate vector.</p>
+<p>Values are normalized into the interval [0,1], by dividing <cite>z</cite> by the
+<cite>flow_depth</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="proffilo.profile.LogLawProfile.html" title="proffilo.profile.LogLawProfile"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../reference/profile/index.html" title="Vertical profile classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/profile/index.html" >Vertical profile classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Andrew J. Moodie.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

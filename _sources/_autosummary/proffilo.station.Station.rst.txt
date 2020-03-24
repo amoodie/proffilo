@@ -14,9 +14,8 @@ proffilo.station.Station
    .. autosummary::
    
       ~Station.__init__
-      ~Station.attribute_checker
+      ~Station.add_velocity_profile
       ~Station.compute_entrainment_from_bed
-      ~Station.compute_velocity_profile
       ~Station.show_velocity
    
    
@@ -33,6 +32,5 @@ proffilo.station.Station
       ~Station.nearbed_concentration
       ~Station.slope
       ~Station.ustar
-      ~Station.z
    
    

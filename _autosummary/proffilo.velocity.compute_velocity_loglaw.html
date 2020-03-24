@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>proffilo.entrain.wright_parker &#8212; Proffilo 0.1.0 documentation</title>
+    <title>proffilo.velocity.compute_velocity_loglaw &#8212; Proffilo 0.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,8 +15,8 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Settling velocity functions" href="../reference/settle/index.html" />
-    <link rel="prev" title="Entrainment functions" href="../reference/entrain/index.html" /> 
+    <link rel="next" title="Concentration functions" href="../reference/concentration/index.html" />
+    <link rel="prev" title="proffilo.velocity.compute_roughness_z0" href="proffilo.velocity.compute_roughness_z0.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -25,28 +25,28 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../reference/settle/index.html" title="Settling velocity functions"
+          <a href="../reference/concentration/index.html" title="Concentration functions"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../reference/entrain/index.html" title="Entrainment functions"
+          <a href="proffilo.velocity.compute_roughness_z0.html" title="proffilo.velocity.compute_roughness_z0"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../reference/entrain/index.html" accesskey="U">Entrainment functions</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="../reference/velocity/index.html" accesskey="U">Velocity functions</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../reference/entrain/index.html"
-                        title="previous chapter">Entrainment functions</a></p>
+  <p class="topless"><a href="proffilo.velocity.compute_roughness_z0.html"
+                        title="previous chapter">proffilo.velocity.compute_roughness_z0</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../reference/settle/index.html"
-                        title="next chapter">Settling velocity functions</a></p>
+  <p class="topless"><a href="../reference/concentration/index.html"
+                        title="next chapter">Concentration functions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/_autosummary/proffilo.entrain.wright_parker.rst.txt"
+      <li><a href="../_sources/_autosummary/proffilo.velocity.compute_velocity_loglaw.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -68,22 +68,33 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="proffilo-entrain-wright-parker">
-<h1>proffilo.entrain.wright_parker<a class="headerlink" href="#proffilo-entrain-wright-parker" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="proffilo-velocity-compute-velocity-loglaw">
+<h1>proffilo.velocity.compute_velocity_loglaw<a class="headerlink" href="#proffilo-velocity-compute-velocity-loglaw" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="proffilo.entrain.wright_parker">
-<code class="sig-prename descclassname">proffilo.entrain.</code><code class="sig-name descname">wright_parker</code><span class="sig-paren">(</span><em class="sig-param">ustarsk</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.entrain.wright_parker" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute entrainment by Wright and Parker 2004 formula</p>
-<p>This function does blah blah…</p>
-<dl class="field-list simple">
+<dt id="proffilo.velocity.compute_velocity_loglaw">
+<code class="sig-prename descclassname">proffilo.velocity.</code><code class="sig-name descname">compute_velocity_loglaw</code><span class="sig-paren">(</span><em class="sig-param">z</em>, <em class="sig-param">z0</em>, <em class="sig-param">ustar</em>, <em class="sig-param">alpha=1</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.velocity.compute_velocity_loglaw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute log-law velocity profile.</p>
+<p>Compute a velocity profile following the log-law (a.k.a. Law of the
+Wall) formualtion. Takes as input the vector of vertical coordinates
+<cite>z</cite>, the roughness height <cite>z0</cite>, the shear velocity <cite>ustar</cite>, and
+optionally the stratification adjustment coefficient <span class="math">\alpha</span>.</p>
+<p>CITATIONS</p>
+<div class="math">
+<p><span class="math">\frac{u}{u_*} = \frac{1}{\alpha \kappa} \ln \left( 30 \frac{z}{k_s} \right)</span></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ustarsk</strong> (<em>float</em>) – Shear velocity at the bed</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<cite>ndarray</cite>) – Vertical coordinate vector.</p></li>
+<li><p><strong>z0</strong> (<cite>float</cite>) – Roughness height.</p></li>
+<li><p><strong>ustar</strong> (<cite>float</cite>) – Shear velocity.</p></li>
+<li><p><strong>alpha</strong> (<cite>float</cite>) – Stratification adjustment coefficient.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>volume of entrained sediment in each grain size class <span class="math">c_b</span>.</p>
+<dd class="field-even"><p><strong>velocity</strong> – Velocity estimated at <cite>z</cite></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -103,14 +114,14 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../reference/settle/index.html" title="Settling velocity functions"
+          <a href="../reference/concentration/index.html" title="Concentration functions"
              >next</a> |</li>
         <li class="right" >
-          <a href="../reference/entrain/index.html" title="Entrainment functions"
+          <a href="proffilo.velocity.compute_roughness_z0.html" title="proffilo.velocity.compute_roughness_z0"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../reference/entrain/index.html" >Entrainment functions</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="../reference/velocity/index.html" >Velocity functions</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

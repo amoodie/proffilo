@@ -1,0 +1,31 @@
+proffilo.profile.BaseProfile
+============================
+
+.. currentmodule:: proffilo.profile
+
+.. autoclass:: BaseProfile
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BaseProfile.__init__
+      ~BaseProfile.compute_values
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BaseProfile.val
+      ~BaseProfile.z
+      ~BaseProfile.z_norm
+   
+   
