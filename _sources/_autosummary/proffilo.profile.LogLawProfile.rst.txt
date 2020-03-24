@@ -25,9 +25,13 @@ proffilo.profile.LogLawProfile
 
    .. autosummary::
    
+      ~LogLawProfile.alpha
+      ~LogLawProfile.flow_depth
+      ~LogLawProfile.ustar
       ~LogLawProfile.val
       ~LogLawProfile.velocity
       ~LogLawProfile.z
+      ~LogLawProfile.z0
       ~LogLawProfile.z_norm
    
    

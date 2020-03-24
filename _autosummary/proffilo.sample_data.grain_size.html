@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>proffilo.sample_data.grain_size &#8212; Proffilo 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Sample data" href="../reference/sample_data/index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../reference/sample_data/index.html" title="Sample data"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/sample_data/index.html" accesskey="U">Sample data</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">proffilo.sample_data.grain_size</a><ul>
+<li><a class="reference internal" href="#grain-size-distributions">Grain-size distributions</a></li>
+<li><a class="reference internal" href="#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../reference/sample_data/index.html"
+                        title="previous chapter">Sample data</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/proffilo.sample_data.grain_size.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-proffilo.sample_data.grain_size">
+<span id="proffilo-sample-data-grain-size"></span><h1>proffilo.sample_data.grain_size<a class="headerlink" href="#module-proffilo.sample_data.grain_size" title="Permalink to this headline">¶</a></h1>
+<p>Sample grain-size distributions.</p>
+<p>There are seven grain size distributions included in this package as samples.
+Each distribution is characterized by an Mx2 <cite>ndarray</cite>, where the first column
+includes the grain size bins, and the second is a cumulative distribution.</p>
+<p class="rubric">Example</p>
+<p>Grain size samples can be instantiated as, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">proffilo</span> <span class="k">as</span> <span class="nn">pf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_yrdata</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">sample_data</span><span class="o">.</span><span class="n">grain_size</span><span class="o">.</span><span class="n">yellow_2015</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be sure to use <code class="docutils literal notranslate"><span class="pre">is_cumulative=True</span></code> if instantiating
+<a class="reference internal" href="proffilo.distribution.Distribution.html#proffilo.distribution.Distribution" title="proffilo.distribution.Distribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Distribution</span></code></a> objects with these datasets.</p>
+</div>
+<p>Available information on the grain size distributions is enumerated in the
+following section.</p>
+<div class="section" id="grain-size-distributions">
+<h2>Grain-size distributions<a class="headerlink" href="#grain-size-distributions" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">brazos()</span></code><span class="classifier"><cite>ndarray</cite></span></dt><dd><p>This distribution is from the Brazos River, Texas, USA.</p>
+</dd>
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">amazon()</span></code><span class="classifier"><cite>ndarray</cite></span></dt><dd><p>This distribution is from the Amazon River, Brazil.</p>
+</dd>
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">mississippi_SL()</span></code><span class="classifier"><cite>ndarray</cite></span></dt><dd><p>This distribution is from the Mississippi River, USA.
+It was collected near St. Louis.</p>
+</dd>
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">mississippi_NO()</span></code><span class="classifier"><cite>ndarray</cite></span></dt><dd><p>This distribution is from the Mississippi River, USA.
+It was collected near New Orleans.</p>
+</dd>
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">yangtze()</span></code><span class="classifier"><cite>ndarray</cite></span></dt><dd><p>This distribution is from the Yangtze River, China.</p>
+</dd>
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">yellow_1980()</span></code><span class="classifier"><cite>ndarray</cite></span></dt><dd><p>This distribution is from the Lower Yellow River, China.
+It was collected in 1980.</p>
+</dd>
+<dt><code class="xref py py-meth docutils literal notranslate"><span class="pre">yellow_2015()</span></code><span class="classifier"><cite>ndarray</cite></span></dt><dd><p>This distribution is from the Lower Yellow River, China.
+It was collected in 2015.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+<p>(<a class="reference external" href="../pyplots/sample_data/grain_size.py">Source code</a>, <a class="reference external" href="../pyplots/sample_data/grain_size.png">png</a>, <a class="reference external" href="../pyplots/sample_data/grain_size.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/sample_data/grain_size.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="../_images/grain_size.png" src="../_images/grain_size.png" />
+</div>
+<p class="rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">amazon</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">brazos</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mississippi_NO</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mississippi_SL</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">yangtze</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">yellow_1980</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">yellow_2015</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../reference/sample_data/index.html" title="Sample data"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/sample_data/index.html" >Sample data</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Andrew J. Moodie.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

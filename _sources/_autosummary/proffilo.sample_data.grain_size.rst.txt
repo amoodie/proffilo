@@ -1,0 +1,28 @@
+proffilo.sample\_data.grain\_size
+=================================
+
+.. automodule:: proffilo.sample_data.grain_size
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      amazon
+      brazos
+      mississippi_NO
+      mississippi_SL
+      yangtze
+      yellow_1980
+      yellow_2015
+   
+   
+
+   
+   
+   
+
+   
+   
+   

@@ -30,6 +30,7 @@ proffilo.station.Station
       ~Station.bed_distribution
       ~Station.flow_depth
       ~Station.nearbed_concentration
+      ~Station.nearbed_distribution
       ~Station.slope
       ~Station.ustar
    

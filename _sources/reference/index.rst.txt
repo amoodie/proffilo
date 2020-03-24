@@ -19,6 +19,7 @@ methods.
    entrain/index
    settle/index
    utils/index
+   sample_data/index
 
 
 References

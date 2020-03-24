@@ -15,7 +15,7 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Vertical profile classes" href="../reference/profile/index.html" />
+    <link rel="next" title="proffilo.distribution.distribution_stats" href="proffilo.distribution.distribution_stats.html" />
     <link rel="prev" title="Grain-size Distribution classes" href="../reference/distribution/index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -25,7 +25,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../reference/profile/index.html" title="Vertical profile classes"
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="proffilo.distribution.distribution_stats.html" title="proffilo.distribution.distribution_stats"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../reference/distribution/index.html" title="Grain-size Distribution classes"
@@ -41,8 +44,8 @@
   <p class="topless"><a href="../reference/distribution/index.html"
                         title="previous chapter">Grain-size Distribution classes</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../reference/profile/index.html"
-                        title="next chapter">Vertical profile classes</a></p>
+  <p class="topless"><a href="proffilo.distribution.distribution_stats.html"
+                        title="next chapter">proffilo.distribution.distribution_stats</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -72,73 +75,23 @@
 <h1>proffilo.distribution.Distribution<a class="headerlink" href="#proffilo-distribution-distribution" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="proffilo.distribution.Distribution">
-<em class="property">class </em><code class="sig-prename descclassname">proffilo.distribution.</code><code class="sig-name descname">Distribution</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">units='microns'</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">proffilo.distribution.</code><code class="sig-name descname">Distribution</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">is_cumulative=False</em>, <em class="sig-param">units='microns'</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Grain-size distibution.</p>
 <p>Grain-size distribution class. Provides convenient organization and
 features, such as summarizing, or plotting.</p>
-<dl class="attribute">
-<dt id="proffilo.distribution.Distribution.bin">
-<code class="sig-name descname">bin</code><a class="headerlink" href="#proffilo.distribution.Distribution.bin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Grain-size bins characterizing the grain-size distribution.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>ndarray</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.distribution.Distribution.dist">
-<code class="sig-name descname">dist</code><a class="headerlink" href="#proffilo.distribution.Distribution.dist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Percentage of grain-size distribution in each bin.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>ndarray</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.distribution.Distribution.units">
-<code class="sig-name descname">units</code><a class="headerlink" href="#proffilo.distribution.Distribution.units" title="Permalink to this definition">¶</a></dt>
-<dd><p>Units of grain size [<span class="math">\mu</span> m]</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>str</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.distribution.Distribution.cumulative_dist">
-<code class="sig-name descname">cumulative_dist</code><a class="headerlink" href="#proffilo.distribution.Distribution.cumulative_dist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cumulative percentage of grain-size distribution along bins.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>ndarray</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="method">
 <dt id="proffilo.distribution.Distribution.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">units='microns'</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Example of docstring on the __init__ method.</p>
-<p>The __init__ method may be documented in either the class level
-docstring, or as a docstring on the __init__ method itself.</p>
-<p>Either form is acceptable, but the two should not be mixed. Choose one
-convention to document the __init__ method and be consistent with it.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Do not include the <cite>self</cite> parameter in the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> section.</p>
-</div>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">is_cumulative=False</em>, <em class="sig-param">units='microns'</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Intialize a Distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>param1</strong> (<em>str</em>) – Description of <cite>param1</cite>.</p></li>
-<li><p><strong>param2</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Description of <cite>param2</cite>. Multiple
-lines are supported.</p></li>
-<li><p><strong>param3</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – Description of <cite>param3</cite>.</p></li>
+<li><p><strong>arr</strong> (<cite>ndarray</cite>) – An Mx2 <cite>ndarray</cite> where the first column is the grain size bins,
+and the second column is the distribution values. If the second
+column is specified as a cumulative distribution give
+<cite>is_cumulative</cite> as True.</p></li>
+<li><p><strong>is_cumulative</strong> (<cite>bool</cite>, optional) – Boolean specifying whether the second column of <cite>arr</cite>.</p></li>
+<li><p><strong>units</strong> (<cite>str</cite>, optional) – Units of the grain size bins, only supports <code class="docutils literal notranslate"><span class="pre">'microns'</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -151,8 +104,8 @@ lines are supported.</p></li>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.__init__" title="proffilo.distribution.Distribution.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(arr[, units])</p></td>
-<td><p>Example of docstring on the __init__ method.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.__init__" title="proffilo.distribution.Distribution.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(arr[, is_cumulative, units])</p></td>
+<td><p>Intialize a Distribution.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">d</span></code>(x[, units])</p></td>
 <td><p></p></td>
@@ -170,22 +123,46 @@ lines are supported.</p></li>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.bin" title="proffilo.distribution.Distribution.bin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bin</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Distribution bins [<span class="math">\mu</span> m].</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.cumulative_dist" title="proffilo.distribution.Distribution.cumulative_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cumulative_dist</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Cumulative distribution.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.data" title="proffilo.distribution.Distribution.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
 <td><p>Properties created with the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator should be documented in the property’s getter method.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.dist" title="proffilo.distribution.Distribution.dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dist</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Percentage in each bin [%].</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.distribution.Distribution.units" title="proffilo.distribution.Distribution.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Units of bins.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="proffilo.distribution.Distribution.bin">
+<em class="property">property </em><code class="sig-name descname">bin</code><a class="headerlink" href="#proffilo.distribution.Distribution.bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distribution bins [<span class="math">\mu</span> m].</p>
+<p>Grain-size bins characterizing the grain-size distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.distribution.Distribution.cumulative_dist">
+<em class="property">property </em><code class="sig-name descname">cumulative_dist</code><a class="headerlink" href="#proffilo.distribution.Distribution.cumulative_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cumulative distribution.</p>
+<p>Cumulative percentage of grain-size distribution along bins [%].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="proffilo.distribution.Distribution.data">
 <em class="property">property </em><code class="sig-name descname">data</code><a class="headerlink" href="#proffilo.distribution.Distribution.data" title="Permalink to this definition">¶</a></dt>
@@ -194,9 +171,33 @@ in the property’s getter method.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="proffilo.distribution.Distribution.dist">
+<em class="property">property </em><code class="sig-name descname">dist</code><a class="headerlink" href="#proffilo.distribution.Distribution.dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Percentage in each bin [%].</p>
+<p>Percentage of grain-size distribution in each bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="proffilo.distribution.Distribution.show_distribution">
 <code class="sig-name descname">show_distribution</code><span class="sig-paren">(</span><em class="sig-param">cumulative=False</em>, <em class="sig-param">block=False</em>, <em class="sig-param">savestr=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.distribution.Distribution.show_distribution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the distribution</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.distribution.Distribution.units">
+<em class="property">property </em><code class="sig-name descname">units</code><a class="headerlink" href="#proffilo.distribution.Distribution.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Units of bins.</p>
+<p>Units of grain size [<span class="math">\mu</span> m]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -216,7 +217,10 @@ in the property’s getter method.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../reference/profile/index.html" title="Vertical profile classes"
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="proffilo.distribution.distribution_stats.html" title="proffilo.distribution.distribution_stats"
              >next</a> |</li>
         <li class="right" >
           <a href="../reference/distribution/index.html" title="Grain-size Distribution classes"

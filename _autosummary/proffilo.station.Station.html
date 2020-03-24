@@ -25,6 +25,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="../reference/distribution/index.html" title="Grain-size Distribution classes"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -76,74 +79,12 @@
 <dd><p>Survey station entity.</p>
 <p>Survey station class. Provides organization to other objects that are
 related to the survey station. Many object can be initialized from
-<cite>Station</cite> methods, or by assignment (see examples below). Additionally
+<code class="docutils literal notranslate"><span class="pre">Station</span></code> methods, or by assignment (see examples below). Additionally
 provides a number of helpful plotting and visualization functions.</p>
-<dl class="attribute">
-<dt id="proffilo.station.Station.ID">
-<code class="sig-name descname">ID</code><a class="headerlink" href="#proffilo.station.Station.ID" title="Permalink to this definition">¶</a></dt>
-<dd><p>Identification string for the survey station, should be a unique identifier.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>str</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.station.Station.bed_distribution">
-<code class="sig-name descname">bed_distribution</code><a class="headerlink" href="#proffilo.station.Station.bed_distribution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Grain size distribution for bed material.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="proffilo.distribution.Distribution.html#proffilo.distribution.Distribution" title="proffilo.distribution.Distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proffilo.distribution.Distribution</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.station.Station.flow_depth">
-<code class="sig-name descname">flow_depth</code><a class="headerlink" href="#proffilo.station.Station.flow_depth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flow depth at the station [m].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>float</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.station.Station.ustar">
-<code class="sig-name descname">ustar</code><a class="headerlink" href="#proffilo.station.Station.ustar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shear velocity [m/s].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>float</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.station.Station.slope">
-<code class="sig-name descname">slope</code><a class="headerlink" href="#proffilo.station.Station.slope" title="Permalink to this definition">¶</a></dt>
-<dd><p>Water surface slope [-].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>float</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.station.Station.nearbed_concentration">
-<code class="sig-name descname">nearbed_concentration</code><a class="headerlink" href="#proffilo.station.Station.nearbed_concentration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shear velocity [m/s]</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>float</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
+<p class="rubric">Near the bed</p>
+<p>The meaning of “near the bed” is up to the user. It can be specified
+directly by setting <code class="xref py py-attr docutils literal notranslate"><span class="pre">nearbed_elevation</span></code>, or through a number of
+other setters. See attributes below for full descriptions.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stn</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">Station</span><span class="p">(</span><span class="n">ID</span><span class="o">=</span><span class="s1">&#39;YR0094&#39;</span><span class="p">)</span>
 </pre></div>
@@ -151,7 +92,10 @@ provides a number of helpful plotting and visualization functions.</p>
 <dl class="method">
 <dt id="proffilo.station.Station.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">ID</em>, <em class="sig-param">bed_distribution=None</em>, <em class="sig-param">flow_depth=None</em>, <em class="sig-param">ustar=None</em>, <em class="sig-param">slope=None</em>, <em class="sig-param">nearbed_distribution=None</em>, <em class="sig-param">nearbed_concentration=None</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.station.Station.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dd><p>Initialize the station.</p>
+<p>Intializing the station requires an ID for the station. All other
+attributes of <code class="docutils literal notranslate"><span class="pre">Station</span></code> can be specified as keyword arguments during
+instantiation; any attributes not specified are set to None by default.</p>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -162,7 +106,7 @@ provides a number of helpful plotting and visualization functions.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.__init__" title="proffilo.station.Station.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(ID[, bed_distribution, flow_depth, …])</p></td>
-<td><p>Initialize self.</p></td>
+<td><p>Initialize the station.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_velocity_profile</span></code>([formula, storestr, nz])</p></td>
 <td><p></p></td>
@@ -183,36 +127,51 @@ provides a number of helpful plotting and visualization functions.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.ID" title="proffilo.station.Station.ID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ID</span></code></a></p></td>
-<td><p>Identification string, should be unique to the station.</p></td>
+<td><p>Identification string.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.station.Station.bed_distribution" title="proffilo.station.Station.bed_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bed_distribution</span></code></a></p></td>
-<td><p>Properties created with the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator should be documented in the property’s getter method.</p></td>
+<td><p>Bed grain-size distribution.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.flow_depth" title="proffilo.station.Station.flow_depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flow_depth</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Flow depth [m].</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.station.Station.nearbed_concentration" title="proffilo.station.Station.nearbed_concentration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearbed_concentration</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Near-bed sediment concentration [-].</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.slope" title="proffilo.station.Station.slope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slope</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.nearbed_distribution" title="proffilo.station.Station.nearbed_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nearbed_distribution</span></code></a></p></td>
+<td><p>Near-bed grain-size distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.station.Station.ustar" title="proffilo.station.Station.ustar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ustar</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.station.Station.slope" title="proffilo.station.Station.slope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slope</span></code></a></p></td>
+<td><p>Water surface slope [-].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.station.Station.ustar" title="proffilo.station.Station.ustar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ustar</span></code></a></p></td>
+<td><p>Shear velocity [m/s].</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt>
-<em class="property">property </em><code class="sig-name descname">ID</code></dt>
-<dd><p>Identification string, should be unique to the station.</p>
+<dt id="proffilo.station.Station.ID">
+<em class="property">property </em><code class="sig-name descname">ID</code><a class="headerlink" href="#proffilo.station.Station.ID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identification string.</p>
+<p>Identification string for the survey station, should be a unique identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<em class="property">property </em><code class="sig-name descname">bed_distribution</code></dt>
-<dd><p>Properties created with the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator should be documented
+<dt id="proffilo.station.Station.bed_distribution">
+<em class="property">property </em><code class="sig-name descname">bed_distribution</code><a class="headerlink" href="#proffilo.station.Station.bed_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bed grain-size distribution.</p>
+<p>Properties created with the <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> decorator should be documented
 in the property’s getter method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="proffilo.distribution.Distribution.html#proffilo.distribution.Distribution" title="proffilo.distribution.Distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proffilo.distribution.Distribution</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -223,10 +182,86 @@ otherwise put it into a new predicted slot only</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="proffilo.station.Station.flow_depth">
+<em class="property">property </em><code class="sig-name descname">flow_depth</code><a class="headerlink" href="#proffilo.station.Station.flow_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flow depth [m].</p>
+<p>Flow depth at the station [m].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.station.Station.nearbed_concentration">
+<em class="property">property </em><code class="sig-name descname">nearbed_concentration</code><a class="headerlink" href="#proffilo.station.Station.nearbed_concentration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Near-bed sediment concentration [-].</p>
+<p>Concentration of sediment <cite>near the bed</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This value should be specified as a <em>volumetric</em> concentration.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.station.Station.nearbed_distribution">
+<em class="property">property </em><code class="sig-name descname">nearbed_distribution</code><a class="headerlink" href="#proffilo.station.Station.nearbed_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Near-bed grain-size distribution.</p>
+<p>Distribution of sediment measured <cite>near the bed</cite>. The meaning of <cite>near
+the bed</cite> is up to the user, and can be defined by a second parameter
+to this setter (see example below) or by setting
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">nearbed_elevation</span></code>.</p>
+<p class="rubric">Examples</p>
+<dl>
+<dt>Initialize a Station and Distribution::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">proffilo</span> <span class="kn">import</span> <span class="n">Station</span><span class="p">,</span> <span class="n">Distribution</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">sample_dists</span> <span class="k">as</span> <span class="n">sd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stn</span> <span class="o">=</span> <span class="n">Station</span><span class="p">(</span><span class="s1">&#39;ExampleID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">Distribution</span><span class="p">(</span><span class="n">arr</span><span class="o">=</span><span class="n">sd</span><span class="o">.</span><span class="n">YR_kenli_bed</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Set the near-bed distribution data::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stn</span><span class="o">.</span><span class="n">neabed_distribution</span> <span class="o">=</span> <span class="n">dist</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>In this case, the height above the bed is assumed to be 5% of the
+station’s flow depth (i.e., <code class="docutils literal notranslate"><span class="pre">0.05*self.flow_depth</span></code>).</p>
+<dl>
+<dt>Alternatively, specify the distribution and height of measurement::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stn</span><span class="o">.</span><span class="n">neabed_distribution</span> <span class="o">=</span> <span class="n">dist</span><span class="p">,</span> <span class="mf">0.12</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="proffilo.station.Station.show_velocity">
 <code class="sig-name descname">show_velocity</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">savestr=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.station.Station.show_velocity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot velocity profiles.</p>
 <p>Plot the velocity profiles.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.station.Station.slope">
+<em class="property">property </em><code class="sig-name descname">slope</code><a class="headerlink" href="#proffilo.station.Station.slope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Water surface slope [-].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.station.Station.ustar">
+<em class="property">property </em><code class="sig-name descname">ustar</code><a class="headerlink" href="#proffilo.station.Station.ustar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shear velocity [m/s].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -245,6 +280,9 @@ otherwise put it into a new predicted slot only</p>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="../reference/distribution/index.html" title="Grain-size Distribution classes"
              >next</a> |</li>

@@ -1,0 +1,6 @@
+proffilo.distribution.distribution\_stats
+=========================================
+
+.. currentmodule:: proffilo.distribution
+
+.. autofunction:: distribution_stats

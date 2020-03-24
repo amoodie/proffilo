@@ -1,0 +1,6 @@
+proffilo.distribution.distribtuion\_compare
+===========================================
+
+.. currentmodule:: proffilo.distribution
+
+.. autofunction:: distribtuion_compare

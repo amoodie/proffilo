@@ -25,6 +25,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="proffilo.profile.LogLawProfile.html" title="proffilo.profile.LogLawProfile"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -74,32 +77,10 @@
 <dt id="proffilo.profile.BaseProfile">
 <em class="property">class </em><code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">BaseProfile</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0=0</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.BaseProfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base profile class.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>This class should <strong>never</strong> be instantiated directly.</p>
 </div>
-<dl class="attribute">
-<dt id="proffilo.profile.BaseProfile.z">
-<code class="sig-name descname">z</code><a class="headerlink" href="#proffilo.profile.BaseProfile.z" title="Permalink to this definition">¶</a></dt>
-<dd><p>Vertical coordinate vector [m].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>ndarray</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="proffilo.profile.BaseProfile.z_norm">
-<code class="sig-name descname">z_norm</code><a class="headerlink" href="#proffilo.profile.BaseProfile.z_norm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalized vertical coordinate vector [-].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><cite>ndarray</cite></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="method">
 <dt id="proffilo.profile.BaseProfile.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0=0</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.BaseProfile.__init__" title="Permalink to this definition">¶</a></dt>
@@ -185,17 +166,28 @@ the plot specification.</p></li>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<em class="property">property </em><code class="sig-name descname">z</code></dt>
+<dt id="proffilo.profile.BaseProfile.z">
+<em class="property">property </em><code class="sig-name descname">z</code><a class="headerlink" href="#proffilo.profile.BaseProfile.z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Vertical coordinate vector.</p>
+<p>Vertical coordinate vector [m].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
-<dt>
-<em class="property">property </em><code class="sig-name descname">z_norm</code></dt>
+<dt id="proffilo.profile.BaseProfile.z_norm">
+<em class="property">property </em><code class="sig-name descname">z_norm</code><a class="headerlink" href="#proffilo.profile.BaseProfile.z_norm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalized vertical coordinate vector.</p>
 <p>Values are normalized into the interval [0,1], by dividing <cite>z</cite> by the
 <cite>flow_depth</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -214,6 +206,9 @@ the plot specification.</p></li>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="proffilo.profile.LogLawProfile.html" title="proffilo.profile.LogLawProfile"
              >next</a> |</li>
