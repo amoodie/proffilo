@@ -15,6 +15,7 @@ proffilo.profile.LogLawProfile
    
       ~LogLawProfile.__init__
       ~LogLawProfile.compute_values
+      ~LogLawProfile.show_profile
    
    
 
@@ -25,6 +26,7 @@ proffilo.profile.LogLawProfile
    .. autosummary::
    
       ~LogLawProfile.val
+      ~LogLawProfile.velocity
       ~LogLawProfile.z
       ~LogLawProfile.z_norm
    

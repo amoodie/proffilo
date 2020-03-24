@@ -115,6 +115,9 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">concentration_rouse</span></code>(flow_depth, b, cb, Rou)</p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.show_profile" title="proffilo.profile.RouseProfile.show_profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_profile</span></code></a>([block, savestr])</p></td>
+<td><p>Show the profile.</p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Attributes</p>
@@ -140,6 +143,35 @@
 <em class="property">abstract </em><code class="sig-name descname">compute_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.RouseProfile.compute_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute values of the profile.</p>
 <p>Must be reimplemented by subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.RouseProfile.show_profile">
+<code class="sig-name descname">show_profile</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">savestr=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.RouseProfile.show_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the profile.</p>
+<p>Show the profile in a plot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function requires <cite>matplotlib</cite>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<cite>bool</cite>, optional) – Whether to pause script execution by showing the plot.
+I.e., the <code class="docutils literal notranslate"><span class="pre">block</span></code> argument in matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p></li>
+<li><p><strong>savestr</strong> (<cite>str</cite>, optional) – String to save the output file. If given <code class="docutils literal notranslate"><span class="pre">block</span></code> is
+set to False.</p></li>
+<li><p><strong>**kwargs</strong> (<em>optional</em>) – Any arbitrary <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code> keyword arguments for
+the plot specification.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">

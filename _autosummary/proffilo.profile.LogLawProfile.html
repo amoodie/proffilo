@@ -74,15 +74,79 @@
 <dt id="proffilo.profile.LogLawProfile">
 <em class="property">class </em><code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">LogLawProfile</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0</em>, <em class="sig-param">ustar</em>, <em class="sig-param">alpha=1</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log-law velocity profile model</p>
-<p>Log-law velocity profile model, defined by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span> \<span class="n">frac</span><span class="p">{</span><span class="n">u</span><span class="p">}{</span><span class="n">u_</span><span class="o">*</span><span class="p">}</span> <span class="o">=</span> \<span class="n">frac</span><span class="p">{</span><span class="mi">1</span><span class="p">}{</span>\<span class="n">alpha</span> \<span class="n">kappa</span><span class="p">}</span> \<span class="n">ln</span> \<span class="n">left</span><span class="p">(</span> <span class="mi">30</span> \<span class="n">frac</span><span class="p">{</span><span class="n">z</span><span class="p">}{</span><span class="n">k_s</span><span class="p">}</span> \<span class="n">right</span><span class="p">)</span>
+<p>Log-law velocity profile model, defined by</p>
+<div class="math">
+<p><span class="math">\frac{u}{u_*} = \frac{1}{\alpha \kappa} \ln \left( 30 \frac{z}{k_s} \right)</span></p>
+</div><p>Also known as the Law-of-the-wall.</p>
+<dl class="attribute">
+<dt id="proffilo.profile.LogLawProfile.z0">
+<code class="sig-name descname">z0</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.z0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Roughness height [m].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proffilo.profile.LogLawProfile.flow_depth">
+<code class="sig-name descname">flow_depth</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.flow_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flow depth at the station [m].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proffilo.profile.LogLawProfile.ustar">
+<code class="sig-name descname">ustar</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.ustar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shear velocity [m/s].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<dl>
+<dt>Initialize a log-law model profile.</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">proffilo.profile</span> <span class="kn">import</span> <span class="n">LogLawProfile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">proffilo.velocity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="mi">5</span>                                      <span class="c1"># flow depth</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z0</span> <span class="o">=</span> <span class="n">velocity</span><span class="o">.</span><span class="n">compute_roughness_z0</span><span class="p">(</span><span class="mf">300e-6</span><span class="p">)</span>  <span class="c1"># roughness height</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">us</span> <span class="o">=</span> <span class="mf">0.05</span>                                   <span class="c1"># shear velocity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ll_prof</span> <span class="o">=</span> <span class="n">LogLawProfile</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">us</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Also known as the Law-of-the-wall.</p>
+</dd>
+<dt>Visualize the profile.</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ll_prof</span><span class="o">.</span><span class="n">show_profile</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>(<a class="reference external" href="../pyplots/profile/loglawprofile.py">Source code</a>, <a class="reference external" href="../pyplots/profile/loglawprofile.png">png</a>, <a class="reference external" href="../pyplots/profile/loglawprofile.hires.png">hires.png</a>, <a class="reference external" href="../pyplots/profile/loglawprofile.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="../_images/loglawprofile.png" src="../_images/loglawprofile.png" />
+</div>
 <dl class="method">
 <dt id="proffilo.profile.LogLawProfile.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">flow_depth</em>, <em class="sig-param">z0</em>, <em class="sig-param">ustar</em>, <em class="sig-param">alpha=1</em>, <em class="sig-param">nz=50</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>a</p>
+<dd><p>Initialize a LogLawProfile.</p>
+<p>Calls <a class="reference internal" href="#proffilo.profile.LogLawProfile.compute_values" title="proffilo.profile.LogLawProfile.compute_values"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_values()</span></code></a> once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth</strong> (<em>flow</em>) – Flow depth [m].</p></li>
+<li><p><strong>z0</strong> (<cite>float</cite>) – Roughness height [m].</p></li>
+<li><p><strong>ustar</strong> (<cite>float</cite>) – Shear velocity [m/s].</p></li>
+<li><p><strong>alpha</strong> (<cite>float</cite>, optional) – Stratification coefficient, default is 1.0 [-].</p></li>
+<li><p><strong>nz</strong> (<cite>int</cite>, optional) – Number of discrete vertical coordinates in <code class="docutils literal notranslate"><span class="pre">z</span></code>, default is 50.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <p class="rubric">Methods</p>
@@ -93,10 +157,13 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.__init__" title="proffilo.profile.LogLawProfile.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(flow_depth, z0, ustar[, alpha, nz])</p></td>
-<td><p>a</p></td>
+<td><p>Initialize a LogLawProfile.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.compute_values" title="proffilo.profile.LogLawProfile.compute_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_values</span></code></a>()</p></td>
 <td><p>Compute velocity profile.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.show_profile" title="proffilo.profile.LogLawProfile.show_profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_profile</span></code></a>([block, savestr])</p></td>
+<td><p>Show the profile.</p></td>
 </tr>
 </tbody>
 </table>
@@ -110,10 +177,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.val" title="proffilo.profile.LogLawProfile.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val</span></code></a></p></td>
 <td><p>Value of profile vector.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.z" title="proffilo.profile.LogLawProfile.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.velocity" title="proffilo.profile.LogLawProfile.velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">velocity</span></code></a></p></td>
+<td><p>Velocity values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.z" title="proffilo.profile.LogLawProfile.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></a></p></td>
 <td><p>Vertical coordinate vector.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.z_norm" title="proffilo.profile.LogLawProfile.z_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_norm</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.LogLawProfile.z_norm" title="proffilo.profile.LogLawProfile.z_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_norm</span></code></a></p></td>
 <td><p>Normalized vertical coordinate vector.</p></td>
 </tr>
 </tbody>
@@ -122,13 +192,52 @@
 <dt id="proffilo.profile.LogLawProfile.compute_values">
 <code class="sig-name descname">compute_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile.compute_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute velocity profile.</p>
+<p>Compute the velocity profile from <code class="docutils literal notranslate"><span class="pre">self</span></code> attributes. This method is
+called once during <a class="reference internal" href="#proffilo.profile.LogLawProfile.__init__" title="proffilo.profile.LogLawProfile.__init__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code></a>, but can be called to recompute values, as
+needed.</p>
 <p>Alias to <a class="reference internal" href="proffilo.velocity.compute_velocity_loglaw.html"><span class="doc">proffilo.velocity.compute_velocity_loglaw</span></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.LogLawProfile.show_profile">
+<code class="sig-name descname">show_profile</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">savestr=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.LogLawProfile.show_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the profile.</p>
+<p>Show the profile in a plot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function requires <cite>matplotlib</cite>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<cite>bool</cite>, optional) – Whether to pause script execution by showing the plot.
+I.e., the <code class="docutils literal notranslate"><span class="pre">block</span></code> argument in matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p></li>
+<li><p><strong>savestr</strong> (<cite>str</cite>, optional) – String to save the output file. If given <code class="docutils literal notranslate"><span class="pre">block</span></code> is
+set to False.</p></li>
+<li><p><strong>**kwargs</strong> (<em>optional</em>) – Any arbitrary <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code> keyword arguments for
+the plot specification.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="proffilo.profile.LogLawProfile.val">
 <em class="property">abstract property </em><code class="sig-name descname">val</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.val" title="Permalink to this definition">¶</a></dt>
 <dd><p>Value of profile vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.profile.LogLawProfile.velocity">
+<em class="property">property </em><code class="sig-name descname">velocity</code><a class="headerlink" href="#proffilo.profile.LogLawProfile.velocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Velocity values.</p>
+<p>Profile velocity values along the <code class="docutils literal notranslate"><span class="pre">z</span></code> coordinate.</p>
 </dd></dl>
 
 <dl class="method">

@@ -16,6 +16,7 @@ proffilo.profile.RouseProfile
       ~RouseProfile.__init__
       ~RouseProfile.compute_values
       ~RouseProfile.concentration_rouse
+      ~RouseProfile.show_profile
    
    
 

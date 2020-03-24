@@ -15,6 +15,7 @@ proffilo.profile.BaseProfile
    
       ~BaseProfile.__init__
       ~BaseProfile.compute_values
+      ~BaseProfile.show_profile
    
    
 
