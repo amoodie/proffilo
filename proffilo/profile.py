@@ -197,7 +197,7 @@ class LogLawProfile(BaseProfile):
         self.z0 = z0
         self.ustar = ustar
         self.alpha = alpha
-        self.display_units = 'velocity (m/s)'
+        self.display_units = 'm/s'
 
         self.velocity = self.compute_values()
 
