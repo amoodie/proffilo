@@ -14,4 +14,4 @@ Status
 ======
 
 Proffilo is currently in development, with a constantly changing API.
-We make no guarantee of stability guarantee, correctness, or functionality.
+We make no guarantee of stability, correctness, or functionality.

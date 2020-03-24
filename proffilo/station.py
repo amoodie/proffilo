@@ -43,9 +43,6 @@ class Station(object):
     nearbed_concentration : `float`
         Shear velocity [m/s]
 
-    ustar : `float`
-        Shear velocity [m/s]
-
     Methods
     -------
 
