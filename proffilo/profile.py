@@ -1,56 +1,113 @@
 __all__ = ['BaseProfile', 'LogLawProfile', 'RouseProfile']
 
 import numpy as np
+import abc
+from .velocity import compute_velocity_loglaw
 
 
 class BaseProfile(object):
-    """Base profile class
+    """Base profile class.
+
+    .. note::
+
+        This class should **never** be instantiated directly.
+
+    Attributes
+    ----------
+
+    z : `ndarray`
+        Vertical coordinate vector.
+
+    z_norm : `ndarray`
+        Normalized vertical coordinate vector.
 
     """
-    def __init__(self):
+    def __init__(self, flow_depth, z0=0, nz=50):
         """
-        Initialize the obj
+        Initialize the Profile.
 
         """
-        raise NotImplementedError
+        self.flow_depth = flow_depth
+        self.z = np.linspace(z0, self.flow_depth, num=nz)
 
+    @property
+    def z(self):
+        """
+        Vertical coordinate vector.
+        """
+        return self._z
+
+    @property
+    def z_norm(self):
+        """Normalized vertical coordinate vector. 
+
+        Values are normalized into the interval [0,1], by dividing `z` by the
+        `flow_depth`.
+        """
+        return self._z_norm
+
+    @z.setter
+    def z(self, var):
+        self._z = var
+        _norm = var / self.flow_depth
+        assert _norm[0] >= 0 and _norm[-1] <= 1
+        self._z_norm = _norm
+
+    @property
+    @abc.abstractmethod
+    def val(self):
+        """
+        Value of profile vector.
+        """
+        return self._val
+
+    @val.setter
+    def val(self, var):
+        self._val = var
+
+    @abc.abstractmethod
+    def compute_values(self):
+        """Compute values of the profile. 
+
+        Must be reimplemented by subclasses.
+        """
+        pass
 
 
 class LogLawProfile(BaseProfile):
-    """
-    a
+    """Log-law velocity profile model
+    
+    Log-law velocity profile model, defined by::
 
+    .. math:: \\frac{u}{u_*} = \\frac{1}{\\alpha \\kappa} \\ln \\left( 30 \\frac{z}{k_s} \\right)
+
+    Also known as the Law-of-the-wall.
     """
-    def __init__(self):
+    def __init__(self, flow_depth, z0, ustar, alpha=1, nz=50):
         """
         a
 
         """
-        raise NotImplementedError
+        super().__init__(flow_depth, z0, nz=nz)
 
-    def compute_velocity_loglaw(z, z0, ustar, alpha=1):
-        """Compute velocity profile following the log-law (Law of the Wall) velocity profile.
+        self.type = 'velocity'
+        self.z0 = z0
+        self.ustar = ustar
+        self.alpha = alpha
 
-        CITATIONS
+        self.velocity = self.compute_values()
 
-        .. math::
-        
-            \frac{{u}}{u_*} = \frac{1}{\alpha \kappa} \ln \left( 30 \frac{z}{k_s} \right)
 
-        Parameters
-        ----------
-        d90 : float
-            The 90th percentile of the bed material grain-size distribution, given in meters.
+    def compute_values(self):
+        """Compute velocity profile.
 
-        Returns
-        -------
-        float
-            The roughness height :math:`z_0`.
-            
+        Alias to :doc:`proffilo.velocity.compute_velocity_loglaw`.
         """
-        z[z<z0] = np.nan
-        vel = (ustar / (alpha * 0.41)) * np.log(z / z0);
-        return vel
+        _velocity = compute_velocity_loglaw(self.z, self.z0, self.ustar, alpha=self.alpha)
+        print(self.z)
+        return _velocity
+
+
 
 
 class RouseProfile(BaseProfile):

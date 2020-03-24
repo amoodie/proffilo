@@ -19,5 +19,6 @@ The classes are defined in ``proffilo.profile``.
 .. autosummary:: 
 	:toctree: ../../_autosummary
 
+	BaseProfile
 	LogLawProfile
 	RouseProfile

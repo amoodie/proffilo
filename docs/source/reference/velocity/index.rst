@@ -18,3 +18,4 @@ The functions are defined in ``proffilo.velocity``.
 	:toctree: ../../_autosummary
 
 	compute_roughness_z0
+	compute_velocity_loglaw

@@ -107,8 +107,6 @@ class Station(object):
         _var, _units = self._unit_stripper(var)
         self._flow_depth = _var
         # self._flow_depth_units = _units
-        if self._flow_depth:
-            self.z = np.linspace(0, self._flow_depth, num=50)
 
     # @property
     # def flow_depth_units(self):
@@ -141,16 +139,6 @@ class Station(object):
 
 
     @property
-    def z(self):
-        return self._z
-
-    @z.setter
-    def z(self, var):
-        _att_dict = self.attribute_checker(['flow_depth'])
-        self._z = var
-
-
-    @property
     def nearbed_concentration(self):
         return self._nearbed_concentration
 
@@ -171,7 +159,7 @@ class Station(object):
             return var, None
 
 
-    def attribute_checker(self, checklist):
+    def _attribute_checker(self, checklist):
         att_dict = {}
         assert type(checklist) is list, 'checklist must be of type `list`, but was type: %s' % type(checklist)
         for c, check in enumerate(checklist):
@@ -188,18 +176,19 @@ class Station(object):
         return att_dict
 
 
-    def compute_velocity_profile(self, formula='loglaw', storestr=None, **kwargs):
+    def add_velocity_profile(self, formula='loglaw', storestr=None, nz=50, **kwargs):
         if formula in ['loglaw', 'lotw', 'lawofthewall']:
             _alpha = kwargs.pop('alpha', 1.0)
-            _att_dict = self.attribute_checker(['flow_depth', 'z', 'ustar'])
+            _att_dict = self._attribute_checker(['flow_depth', 'ustar'])
             _z0 = velocity.compute_roughness_z0(self.bed_distribution.d(90, units='microns')*1e-6) # hardcoded for microns!
-            _vel = profile.velocity_loglaw(self.z, _z0, self.ustar, alpha=_alpha)
+            _prof = profile.LogLawProfile(flow_depth=self.flow_depth, z0=_z0, 
+                                         ustar=self.ustar, alpha=_alpha, nz=nz)
             if not storestr:
                 storestr = 'loglaw'
         else:
             raise ValueError('Invalid velocity formula provided: %s.' % formula)
 
-        self._velocity_profiles[storestr] = [_vel, kwargs]
+        self._velocity_profiles[storestr] = [_prof, kwargs]
 
 
     def compute_entrainment_from_bed(self, formula='wright_parker', replace=False):
@@ -220,18 +209,20 @@ class Station(object):
             raise plt
 
     def show_velocity(self, block=False, savestr=None, **kwargs):
-        """
-        Show the distribution
+        """Plot velocity profiles.
+
+        Plot the velocity profiles.
         """
         self._mpl_check()
+        assert len(self._velocity_profiles) > 0, 'No velocity profiles found.'
 
         xlab = kwargs.pop('xlabel', 'velocity ('+'m/s'+')')
         ylab = kwargs.pop('ylabel', 'depth ('+'m'+')')
         
         fig, ax = plt.subplots()
         for v, prof in enumerate(self._velocity_profiles):
-            _prof = self._velocity_profiles[prof]
-            ax.plot(_prof[0], self.z, **_prof[1])    
+            _prof, _mplkwargs = self._velocity_profiles[prof]
+            ax.plot(_prof.velocity, _prof.z, **_mplkwargs)    
         
         ax.legend(self._velocity_profiles.keys())
         ax.set_xlabel(xlab)
