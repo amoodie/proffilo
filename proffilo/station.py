@@ -20,43 +20,30 @@ class Station(object):
 
     Survey station class. Provides organization to other objects that are
     related to the survey station. Many object can be initialized from
-    `Station` methods, or by assignment (see examples below). Additionally
+    ``Station`` methods, or by assignment (see examples below). Additionally
     provides a number of helpful plotting and visualization functions.
 
-    Attributes
-    ----------
-    ID : `str`
-        Identification string for the survey station, should be a unique identifier.
-    
-    bed_distribution : :obj:`proffilo.distribution.Distribution`
-        Grain size distribution for bed material.
-    
-    flow_depth : `float`
-        Flow depth at the station [m].
-    
-    ustar : `float`
-        Shear velocity [m/s].
+    .. rubric:: Near the bed
 
-    slope : `float`
-        Water surface slope [-].
-
-    nearbed_concentration : `float`
-        Shear velocity [m/s]
-
-    Methods
-    -------
-
-    See Also
-    --------
+    The meaning of "near the bed" is up to the user. It can be specified
+    directly by setting :attr:`nearbed_elevation`, or through a number of
+    other setters. See attributes below for full descriptions.
 
     Examples
     --------
     >>> stn = pf.Station(ID='YR0094')
+
     
     """
     def __init__(self, ID, bed_distribution=None, flow_depth=None, ustar=None, 
                  slope=None, 
                  nearbed_distribution=None, nearbed_concentration=None):
+        """Initialize the station.
+
+        Intializing the station requires an ID for the station. All other
+        attributes of ``Station`` can be specified as keyword arguments during
+        instantiation; any attributes not specified are set to None by default.
+        """
 
         self.ID = ID
         self.bed_distribution = bed_distribution
@@ -69,8 +56,9 @@ class Station(object):
 
     @property
     def ID(self):
-        """
-        Identification string, should be unique to the station.
+        """str : Identification string.
+
+        Identification string for the survey station, should be a unique identifier.
         """
         return self._ID
 
@@ -81,7 +69,8 @@ class Station(object):
 
     @property
     def bed_distribution(self):
-        """
+        """:obj:`proffilo.distribution.Distribution` : Bed grain-size distribution.
+
         Properties created with the ``@property`` decorator should be documented
         in the property's getter method.
         """
@@ -97,6 +86,10 @@ class Station(object):
 
     @property
     def flow_depth(self):
+        """ `float` : Flow depth [m].
+
+        Flow depth at the station [m].
+        """
         return self._flow_depth
 
     @flow_depth.setter
@@ -119,6 +112,8 @@ class Station(object):
 
     @property
     def ustar(self):
+        """`float` : Shear velocity [m/s].
+        """
         return self._ustar
 
     @ustar.setter
@@ -128,6 +123,8 @@ class Station(object):
 
     @property
     def slope(self):
+        """`float` : Water surface slope [-].
+        """
         return self._slope
 
     @slope.setter
@@ -136,14 +133,56 @@ class Station(object):
 
 
     @property
+    def nearbed_distribution(self):
+        """Near-bed grain-size distribution.
+
+        Distribution of sediment measured `near the bed`. The meaning of `near
+        the bed` is up to the user, and can be defined by a second parameter
+        to this setter (see example below) or by setting
+        :attr:`~proffilo.station.Station.nearbed_elevation`.
+
+        Examples
+        --------
+        Initialize a Station and Distribution::
+            >>> from proffilo import Station, Distribution, data.sample_dists as sd
+            >>> stn = Station('ExampleID')
+            >>> dist = Distribution(arr=sd.YR_kenli_bed)
+    
+        Set the near-bed distribution data::
+            >>> stn.neabed_distribution = dist
+
+        In this case, the height above the bed is assumed to be 5% of the
+        station's flow depth (i.e., ``0.05*self.flow_depth``).
+
+        Alternatively, specify the distribution and height of measurement::
+            >>> stn.neabed_distribution = dist, 0.12
+        """
+        return self._bed_distribution
+
+    @nearbed_distribution.setter
+    def nearbed_distribution(self, var):
+        if type(var) is Distribution:
+            self._nearbed_distribution = var
+        else:
+            self._nearbed_distribution = None
+
+    @property
     def nearbed_concentration(self):
+        """Near-bed sediment concentration [-].
+
+        Concentration of sediment `near the bed`.
+
+        .. note::
+            This value should be specified as a *volumetric* concentration.
+
+        """
         return self._nearbed_concentration
 
     @nearbed_concentration.setter
     def nearbed_concentration(self, var):
         if var is not None:
-            assert var.ndim == 1
-            assert len(var) == len(self._bed_distribution.bin)
+            # assert var.ndim == 1
+            assert type(var) in [float, int]
             self._nearbed_concentration = var
         else:
             self._nearbed_concentration = None

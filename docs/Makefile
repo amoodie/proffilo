@@ -19,4 +19,5 @@ help:
 %: Makefile
 	rm -rf source/api/
 	rm -rf source/_autosummary/
+	rm -rf ../build/
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

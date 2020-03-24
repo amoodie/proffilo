@@ -13,18 +13,9 @@ except ImportError as e:
 class BaseProfile(object):
     """Base profile class.
 
-    .. note::
+    .. warning::
 
         This class should **never** be instantiated directly.
-
-    Attributes
-    ----------
-
-    z : `ndarray`
-        Vertical coordinate vector [m].
-
-    z_norm : `ndarray`
-        Normalized vertical coordinate vector [-].
 
     """
     def __init__(self, flow_depth, z0=0, nz=50):
@@ -37,14 +28,15 @@ class BaseProfile(object):
 
     @property
     def z(self):
-        """
-        Vertical coordinate vector.
+        """`ndarray` : Vertical coordinate vector.
+
+        Vertical coordinate vector [m].
         """
         return self._z
 
     @property
     def z_norm(self):
-        """Normalized vertical coordinate vector. 
+        """`ndarray` : Normalized vertical coordinate vector. 
 
         Values are normalized into the interval [0,1], by dividing `z` by the
         `flow_depth`.
@@ -78,6 +70,22 @@ class BaseProfile(object):
         """
         pass
 
+    def _attribute_checker(self, checklist):
+        att_dict = {}
+        assert type(checklist) is list, 'checklist must be of type `list`, but was type: %s' % type(checklist)
+        for c, check in enumerate(checklist):
+            has = getattr(self, check , None)
+            if has is None:
+                att_dict[check] = False
+            else:
+                att_dict[check] = True
+
+        log_list = [value for value in att_dict.values()]
+        log_form = [value for string, value in zip(log_list, att_dict.keys())  if not string]
+        if not all(log_list):
+            raise RuntimeError('Required attribute(s) not assigned: '+str(log_form))
+        return att_dict
+
     def _mpl_check(self):
         if isinstance(plt, ImportError):
             raise plt
@@ -108,9 +116,6 @@ class BaseProfile(object):
         -------
 
         None
-
-        
-
         """
         self._mpl_check()
 
@@ -139,28 +144,16 @@ class LogLawProfile(BaseProfile):
 
     Also known as the Law-of-the-wall.
 
-    Attributes
-    ----------
-
-    z0 : `float`
-        Roughness height [m].
-
-    flow_depth : `float`
-        Flow depth at the station [m].
-    
-    ustar : `float`
-        Shear velocity [m/s].
-
     Examples
     --------
 
     Initialize a log-law model profile.
         >>> from proffilo.profile import LogLawProfile
         >>> import proffilo.velocity
-        >>> fd = 5                                      # flow depth
-        >>> z0 = velocity.compute_roughness_z0(300e-6)  # roughness height
-        >>> us = 0.05                                   # shear velocity
-        >>> ll_prof = LogLawProfile(fd, z0, us)
+        >>> fd = 5                                           # flow depth
+        >>> z0 = ks = velocity.compute_roughness_z0(300e-6)  # roughness height
+        >>> ustar = 0.05                                     # shear velocity
+        >>> ll_prof = LogLawProfile(fd, z0, ustar)
 
     Visualize the profile.
         >>> ll_prof.show_profile()
@@ -200,6 +193,46 @@ class LogLawProfile(BaseProfile):
         self.display_units = 'm/s'
 
         self.velocity = self.compute_values()
+
+    @property
+    def z0(self):
+        """`float` : Roughness height [m].
+        """
+        return self._z0
+
+    @z0.setter
+    def z0(self, var):
+        self._z0 = var
+
+    @property
+    def flow_depth(self):
+        """`float` : Flow depth [m].
+        """
+        return self._flow_depth
+
+    @flow_depth.setter
+    def flow_depth(self, var):
+        self._flow_depth = var
+
+    @property
+    def ustar(self):
+        """`float` : Shear velocity [m/s].
+        """
+        return self._ustar
+
+    @ustar.setter
+    def ustar(self, var):
+        self._ustar = var
+
+    @property
+    def alpha(self):
+        """Stratification adjustment coefficient [-].
+        """
+        return self._alpha
+
+    @alpha.setter
+    def alpha(self, var):
+        self._alpha = var
 
     @property
     def velocity(self):
