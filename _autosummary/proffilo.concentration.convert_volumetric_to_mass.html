@@ -79,10 +79,9 @@
 <dd><p>Convert volumetric concentration to mass concentration.</p>
 <p>Converts a given volumetric concentration to mass concentration (e.g.,
 g/L) by assuming a constant sediment density. Formalized as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span> <span class="n">C_m</span> <span class="o">=</span> <span class="n">C_m</span> \<span class="n">times</span> \<span class="n">rho</span>
-</pre></div>
-</div>
-<p>where <span class="math">C_m</span> is mass concentration, <span class="math">C_v</span> is volumetric
+<div class="math">
+<p><span class="math">C_m = C_m \times \rho</span></p>
+</div><p>where <span class="math">C_m</span> is mass concentration, <span class="math">C_v</span> is volumetric
 concentration, and <span class="math">\rho</span> is sediment density in desired mass
 units. For example, for mass units units g/L, <code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code> should be
 given in g/L.</p>
