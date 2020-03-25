@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>proffilo.concentration.convert_to_mass_concentration &#8212; Proffilo 0.1.0 documentation</title>
+    <title>proffilo.concentration.convert_volumetric_to_mass &#8212; Proffilo 0.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -16,7 +16,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Entrainment functions" href="../reference/entrain/index.html" />
-    <link rel="prev" title="Concentration functions" href="../reference/concentration/index.html" /> 
+    <link rel="prev" title="proffilo.concentration.convert_mass_to_volumetric" href="proffilo.concentration.convert_mass_to_volumetric.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -31,7 +31,7 @@
           <a href="../reference/entrain/index.html" title="Entrainment functions"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../reference/concentration/index.html" title="Concentration functions"
+          <a href="proffilo.concentration.convert_mass_to_volumetric.html" title="proffilo.concentration.convert_mass_to_volumetric"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
@@ -41,15 +41,15 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../reference/concentration/index.html"
-                        title="previous chapter">Concentration functions</a></p>
+  <p class="topless"><a href="proffilo.concentration.convert_mass_to_volumetric.html"
+                        title="previous chapter">proffilo.concentration.convert_mass_to_volumetric</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="../reference/entrain/index.html"
                         title="next chapter">Entrainment functions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/_autosummary/proffilo.concentration.convert_to_mass_concentration.rst.txt"
+      <li><a href="../_sources/_autosummary/proffilo.concentration.convert_volumetric_to_mass.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -71,12 +71,42 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="proffilo-concentration-convert-to-mass-concentration">
-<h1>proffilo.concentration.convert_to_mass_concentration<a class="headerlink" href="#proffilo-concentration-convert-to-mass-concentration" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="proffilo-concentration-convert-volumetric-to-mass">
+<h1>proffilo.concentration.convert_volumetric_to_mass<a class="headerlink" href="#proffilo-concentration-convert-volumetric-to-mass" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="proffilo.concentration.convert_to_mass_concentration">
-<code class="sig-prename descclassname">proffilo.concentration.</code><code class="sig-name descname">convert_to_mass_concentration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.concentration.convert_to_mass_concentration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="proffilo.concentration.convert_volumetric_to_mass">
+<code class="sig-prename descclassname">proffilo.concentration.</code><code class="sig-name descname">convert_volumetric_to_mass</code><span class="sig-paren">(</span><em class="sig-param">vol_conc</em>, <em class="sig-param">density=2650</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.concentration.convert_volumetric_to_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert volumetric concentration to mass concentration.</p>
+<p>Converts a given volumetric concentration to mass concentration (e.g.,
+g/L) by assuming a constant sediment density. Formalized as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span> <span class="n">C_m</span> <span class="o">=</span> <span class="n">C_m</span> \<span class="n">times</span> \<span class="n">rho</span>
+</pre></div>
+</div>
+<p>where <span class="math">C_m</span> is mass concentration, <span class="math">C_v</span> is volumetric
+concentration, and <span class="math">\rho</span> is sediment density in desired mass
+units. For example, for mass units units g/L, <code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code> should be
+given in g/L.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vol_conc</strong> (<em>float</em>) – Volumetric concentration to be converted.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em>, </em><em>optional</em>) – Sediment density. If not supplied, density of
+quartz is assumed (2650 g/L).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mass_conc</strong> – Mass concentration in units of <code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pf</span><span class="o">.</span><span class="n">concentration</span><span class="o">.</span><span class="n">convert_volumetric_to_mass</span><span class="p">(</span><span class="mf">0.0003</span><span class="p">,</span> <span class="mi">2650</span><span class="p">)</span>
+<span class="go">0.7949999999999999</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </div>
 
@@ -99,7 +129,7 @@
           <a href="../reference/entrain/index.html" title="Entrainment functions"
              >next</a> |</li>
         <li class="right" >
-          <a href="../reference/concentration/index.html" title="Concentration functions"
+          <a href="proffilo.concentration.convert_mass_to_volumetric.html" title="proffilo.concentration.convert_mass_to_volumetric"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>

@@ -17,4 +17,5 @@ The functions are defined in ``proffilo.concentration``.
 .. autosummary:: 
 	:toctree: ../../_autosummary
 
-	convert_to_mass_concentration
+	convert_mass_to_volumetric
+	convert_volumetric_to_mass
