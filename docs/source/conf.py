@@ -72,7 +72,7 @@ automodapi_inheritance_diagram = False
 autodoc_default_flags = ['members','inherited-members']
 
 # img math
-imgmath_latex_preamble = '\\usepackage{fouriernc}' # newtxsf, mathptmx
+# imgmath_latex_preamble = '\\usepackage{fouriernc}' # newtxsf, mathptmx
 
 # -- Options for HTML output -------------------------------------------------
 
