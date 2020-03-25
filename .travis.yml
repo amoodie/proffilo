@@ -21,7 +21,9 @@ jobs:
   include:
     - stage: deploydocs
       python: "3.8"
-      install: pip install -r requirements.txt sphinx sphinx-rtd-theme sphinx-automodapi
+      install: 
+        - pip install -r requirements.txt sphinx sphinx-rtd-theme sphinx-automodapi
+        - sudo apt install texlive-fonts-extra
       script: (cd docs && make html)
       deploy:
         provider: pages:git

@@ -3,10 +3,12 @@
 def convert_mass_to_volumetric(mass_conc, density=2650):
     """Convert mass concentration to volumetric concentration.
 
-    Converts a given mass concentration (e.g., g/L) to volumetric
-    concentration by assuming a constant sediment density. Formalized as::
-
-    .. math:: C_v = \\frac{C_m}{\\rho}
+    Converts a given mass concentration (e.g., g/L) to volumetric 
+    concentration by assuming a constant sediment density. Formalized as:
+   
+    .. math::
+    
+        C_m = C_m / \\rho
 
     where :math:`C_v` is volumetric concentration, :math:`C_m` is mass
     concentration, and :math:`\\rho` is sediment density with the same units
@@ -49,9 +51,11 @@ def convert_volumetric_to_mass(vol_conc, density=2650):
     """Convert volumetric concentration to mass concentration.
     
     Converts a given volumetric concentration to mass concentration (e.g.,
-    g/L) by assuming a constant sediment density. Formalized as::
+    g/L) by assuming a constant sediment density. Formalized as:
     
-    .. math:: C_m = C_m \\times \\rho
+    .. math:: 
+
+        C_m = C_m \\times \\rho
     
     where :math:`C_m` is mass concentration, :math:`C_v` is volumetric
     concentration, and :math:`\\rho` is sediment density in desired mass
