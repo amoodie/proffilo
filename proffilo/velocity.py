@@ -26,37 +26,37 @@ def compute_roughness_z0(d90):
 
 
 def compute_velocity_loglaw(z, z0, ustar, alpha=1):
-        """Compute log-law velocity profile.
+    """Compute log-law velocity profile.
 
-        Compute a velocity profile following the log-law (a.k.a. Law of the
-        Wall) formualtion. Takes as input the vector of vertical coordinates
-        `z`, the roughness height `z0`, the shear velocity `ustar`, and
-        optionally the stratification adjustment coefficient :math:`\\alpha`.
+    Compute a velocity profile following the log-law (a.k.a. Law of the
+    Wall) formualtion. Takes as input the vector of vertical coordinates
+    `z`, the roughness height `z0`, the shear velocity `ustar`, and
+    optionally the stratification adjustment coefficient :math:`\\alpha`.
 
-        CITATIONS
+    CITATIONS
 
-        .. math:: \\frac{u}{u_*} = \\frac{1}{\\alpha \\kappa} \\ln \\left( 30 \\frac{z}{k_s} \\right)
+    .. math:: \\frac{u}{u_*} = \\frac{1}{\\alpha \\kappa} \\ln \\left( 30 \\frac{z}{k_s} \\right)
 
-        Parameters
-        ----------
-        z : `ndarray`
-            Vertical coordinate vector.
+    Parameters
+    ----------
+    z : `ndarray`
+        Vertical coordinate vector.
 
-        z0 : `float`
-            Roughness height.
+    z0 : `float`
+        Roughness height.
 
-        ustar : `float`
-            Shear velocity.
+    ustar : `float`
+        Shear velocity.
 
-        alpha : `float`
-            Stratification adjustment coefficient.
+    alpha : `float`
+        Stratification adjustment coefficient.
+    
+    Returns
+    -------
+    velocity : `ndarray`
+        Velocity estimated at `z`
         
-        Returns
-        -------
-        velocity : `ndarray`
-            Velocity estimated at `z`
-            
-        """
-        z[z<=z0] = np.nan
-        velocity = (ustar / (alpha * 0.41)) * np.log(z / z0);
-        return velocity
+    """
+    z[z<=z0] = np.nan
+    velocity = (ustar / (alpha * 0.41)) * np.log(z / z0);
+    return velocity

@@ -18,13 +18,24 @@ class BaseProfile(object):
         This class should **never** be instantiated directly.
 
     """
-    def __init__(self, flow_depth, z0=0, nz=50):
+    def __init__(self, flow_depth, z_start=0, nz=50):
         """
-        Initialize the Profile.
+        Initialize the BaseProfile.
+
+        Parameters
+        ----------
+        flow depth : `float`
+            Flow depth [m].
+
+        z_start : `float`, optional
+            Profile starting height [m]. Default is 0.
+
+        nz : `int`, optional
+            Number of discrete vertical coordinates in ``z``, default is 50.
 
         """
         self.flow_depth = flow_depth
-        self.z = np.linspace(z0, self.flow_depth, num=nz)
+        self.z = np.linspace(z_start, self.flow_depth, num=nz)
 
     @property
     def z(self):
@@ -38,8 +49,8 @@ class BaseProfile(object):
     def z_norm(self):
         """`ndarray` : Normalized vertical coordinate vector. 
 
-        Values are normalized into the interval [0,1], by dividing `z` by the
-        `flow_depth`.
+        Values are normalized into the interval [0,1], by dividing :attr:`z` by the
+        :attr:`flow_depth`.
         """
         return self._z_norm
 
