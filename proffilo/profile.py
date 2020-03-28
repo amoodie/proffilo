@@ -94,7 +94,8 @@ class BaseProfile(object):
         log_list = [value for value in att_dict.values()]
         log_form = [value for string, value in zip(log_list, att_dict.keys())  if not string]
         if not all(log_list):
-            raise RuntimeError('Required attribute(s) not assigned: '+str(log_form))
+            raise RuntimeError('required attribute(s) not assigned: '+str(log_form)+
+                               ' for object: '+str(type(self)))
         return att_dict
 
     def _mpl_check(self):
