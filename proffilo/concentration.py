@@ -41,7 +41,10 @@ def convert_mass_to_volumetric(mass_conc, density=2650):
     0.0007547169811320754
 
     """
-    assert density > 0, 'Density must be > 0'
+    if density <= 0: 
+        raise ValueError('Density must be > 0')
+    if type(density) not in [float, int]:
+        raise TypeError('Expected type `float` or `int` for `density`, but type was: %s' % type(density))
     assert type(density) in [float, int], 'Expected type `float` or `int`, but type was: %s' % type(density)
     vol_conc = mass_conc / density
     return vol_conc
@@ -85,7 +88,9 @@ def convert_volumetric_to_mass(vol_conc, density=2650):
     0.7949999999999999
 
     """
-    assert density > 0, 'Density must be > 0'
-    assert type(density) in [float, int], 'Expected type `float` or `int`, but type was: %s' % type(density)
+    if density <= 0: 
+        raise ValueError('Density must be > 0')
+    if type(density) not in [float, int]:
+        raise TypeError('Expected type `float` or `int` for `density`, but type was: %s' % type(density))
     mass_conc = vol_conc * density
     return mass_conc
