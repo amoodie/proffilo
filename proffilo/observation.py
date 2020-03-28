@@ -57,11 +57,15 @@ class BaseObservations(object):
         self._data = data.copy(deep=True)
         for c, col in enumerate(self.columns):
             if col not in self.data: # check if it's in data exactly
-                if col in connection.keys(): # check if it's given in the connection
-                    self._data.rename(columns={connection[col]: col}, inplace=True)
-                    self.mapper[connection[col]] = col
-                else:
+                if col not in connection.keys(): # check if it's given in the connection
                     self._data[col] = np.nan # full_like(self.data) # add it
+
+        # loop through a second time to add anything in connection to the mapper
+        for c, col in enumerate(self.columns):
+            if col in connection.keys():
+                self._data.rename(columns={connection[col]: col}, inplace=True)
+                self.mapper[connection[col]] = col
+
         self.has_data = True # for safety from overwriting
 
     def __getattr__(self, name):
@@ -98,43 +102,16 @@ class BaseObservations(object):
 
 
 
-
-    # class AttributeArray(object):
-    #     """Agnostic attribute.
-
-    #     An agnostic attribute class that wraps the pandas DataFrame.
-    #     """
-    #     def __init__(self, name, columns):
-    #         self.name = name
-    #         if type(columns) is list:
-    #             self.data = pd.DataFrame(columns=columns)
-    #         else:
-    #             raise ValueError('`columns` must be type `list`.')
-
-    #     def append(self, var):
-    #         self.data = np.append(self.data, var)
-
-    #     def replace(self):
-    #         raise NotImplementedError
-
-    #     def delete(self):
-    #         raise NotImplementedError
-
-    #     def __getitem__(self, sliced):
-    #         print(sliced)
-    #         return 10
-
-    #     def __len__(self):
-    #         return len(self.data)
-
-    #     def where(self, arg):
-    #         fart=3
-    #         print(eval(arg))
-
-
 class SedimentConcentrationObservations(BaseObservations):
     """Sediment concentration observations collection.
     
+    .. warning::
+
+            There is no support for indexing with original column labels via
+            ``pd.DataFrame`` methods. For example, if an Observation class is
+            initialized with the ``'concentration'`` field as ``'conc'`` in
+            the dataframe, but linked via ``connection``, you cannot do
+            ``stn.conc_obs.loc[:,'conc']``.
     """
     def __init__(self, data=None, flow_depth=None, connection={}):
         """Initialize a ConcentrationObservation.
@@ -143,6 +120,9 @@ class SedimentConcentrationObservations(BaseObservations):
         ----------
 
         data : `pandas.DataFrame`, optional
+            An optional DataFrame with the concentration data preconfigured.
+            If not supplied, this field is set to ``None``, and data can be
+            filled in via the :attr:`add_observation` method.
 
         flow depth : `float`, optional.
             Flow depth [m]. Some functionality may be limited if this is not supplied.
@@ -151,74 +131,45 @@ class SedimentConcentrationObservations(BaseObservations):
             A Distribution describing the observation.
 
         """
-        columns = ['concentration', 'elevation', 'distribution', 'test1']
+        columns = ['concentration', 'elevation', 'distribution']
+        connection['elevation'] = 'z'
         super().__init__(columns, data, flow_depth, connection)
-        """
-        IDEAS:
-
-        have init take optionally a pandas array. If it is given, it looks for
-        fields with the names of expected fields. If not found, issue a
-        warning saying they were not linked. Linking can be done via another
-        dictionary that adds my specific names as aliass for the names in the
-        data table. This allows people to have any arbitrary data they want
-        stuck in there too, but my builtins will only work if there is a
-        linkage to the correct columns. Have a general indexer method
-        (wrappers to .loc, .iloc) to be able to get anythign the user wants,
-        as a pandas index as well.
-
-        """
-
-
-        # raise NotImplementedError
-
 
         self.type = 'sediment_concentration'
         
-        # self.concentration = self.AttributeArray('concentration', self.columns)
-
 
     def add_observation(self, var):
         self.columns
 
 
+    # @property
+    # def z(self):
+    #     """`float` : Observation elevation [m].
 
+    #     Elevation of observation above the bed [m]. Must be greater than 0.
+    #     """
+    #     return self._z
 
     # @property
-    # def concentration(self):
-    #     return self._concentration
+    # def z_norm(self):
+    #     """`ndarray` : Normalized observation elevation.
 
-    # @concentration.setter
-    # def concentration(self, var):
-    #     self._concentration = var
+    #     Elevation value is normalized into the interval [0,1], by dividing
+    #     :attr:`z` by the :attr:`flow_depth`. If :attr:`flow_depth` is type
+    #     `None`, :attr:`z_norm` is set to `None`. 
+    #     """
+    #     return self._z_norm
 
-    @property
-    def z(self):
-        """`float` : Observation elevation [m].
-
-        Elevation of observation above the bed [m]. Must be greater than 0.
-        """
-        return self._z
-
-    @property
-    def z_norm(self):
-        """`ndarray` : Normalized observation elevation.
-
-        Elevation value is normalized into the interval [0,1], by dividing
-        :attr:`z` by the :attr:`flow_depth`. If :attr:`flow_depth` is type
-        `None`, :attr:`z_norm` is set to `None`. 
-        """
-        return self._z_norm
-
-    @z.setter
-    def z(self, var):
-        assert var > 0, 'Observation ``z`` must be > 0, but was: %s' % str(var)
-        self._z = var
-        if self.flow_depth:
-            _norm = var / self.flow_depth
-            assert _norm[0] >= 0 and _norm[-1] <= 1
-            self._z_norm = _norm
-        else:
-            self._z_norm = None
+    # @z.setter
+    # def z(self, var):
+    #     assert var > 0, 'Observation ``z`` must be > 0, but was: %s' % str(var)
+    #     self._z = var
+    #     if self.flow_depth:
+    #         _norm = var / self.flow_depth
+    #         assert _norm[0] >= 0 and _norm[-1] <= 1
+    #         self._z_norm = _norm
+    #     else:
+    #         self._z_norm = None
 
 
 """

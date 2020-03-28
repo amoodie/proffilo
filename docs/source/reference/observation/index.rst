@@ -17,5 +17,5 @@ The functions are defined in ``proffilo.observation``.
 .. autosummary:: 
 	:toctree: ../../_autosummary
 
-	BaseObservation
-	SedimentConcentrationObservation
+	BaseObservations
+	SedimentConcentrationObservations
