@@ -21,3 +21,4 @@ The functions are defined in ``proffilo.observation``.
 		:exclude-members: __getattr__
 	SedimentConcentrationObservations
 		:exclude-members: __getattr__
+
