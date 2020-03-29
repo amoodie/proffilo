@@ -18,7 +18,11 @@ The functions are defined in ``proffilo.observation``.
 	:toctree: ../../_autosummary
 
 	BaseObservations
+<<<<<<< HEAD
 		:exclude-members: __getattr__
 	SedimentConcentrationObservations
 		:exclude-members: __getattr__
 
+=======
+	SedimentConcentrationObservations
+>>>>>>> bfe06e1fa6b887c93ad196639b0b638f206c7147

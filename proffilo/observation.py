@@ -42,12 +42,14 @@ class BaseObservations(object):
         
         self.flow_depth = flow_depth
         
+
     @property
     def data(self):
         """`pd.DataFrame` : Pandas dataframe object containing the observation data.
 
         """
         return self._data
+
 
     def _set_data_init(self, data, connection):
         """Handle initiation of the pandas dataframe.
@@ -82,6 +84,7 @@ class BaseObservations(object):
             __set_data_empty_DataFrame()
         __set_connection()
 
+
     def __getattr__(self, name):
         """Make columns and DataFrame methods directly accessible.
 
@@ -100,8 +103,10 @@ class BaseObservations(object):
             except AttributeError as e:
                 raise e # AttributeError('Observation class has no attribute: %s' % name)
 
+
     def __repr__(self):
         return str(self.data)
+
 
     @property
     def flow_depth(self):
@@ -395,7 +400,6 @@ class VelocityObservations(BaseObservations):
 
         self.type = 'velocity'
         
-
     def add_observation(self, var):
         raise NotImplementedError
 
