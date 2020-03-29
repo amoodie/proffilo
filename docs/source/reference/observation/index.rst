@@ -22,4 +22,4 @@ The functions are defined in ``proffilo.observation``.
 	SedimentConcentrationObservations
 		:exclude-members: __getattr__
 
-	SedimentConcentrationObservations
+	VelocityObservations

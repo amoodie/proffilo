@@ -1,4 +1,4 @@
-__all__ = ['BaseObservations', 'SedimentConcentrationObservations']
+__all__ = ['BaseObservations', 'SedimentConcentrationObservations', 'VelocityObservations']
 
 
 import numpy as np
@@ -233,9 +233,18 @@ class SedimentConcentrationObservations(BaseObservations):
     extracting information from :class:`~proffilo.distribution.Distributon`
     objects associated with concentration measurements.
 
+    Notably, this class overloads :attr:`__getattr__`, such that column names
+    defined in the :attr:`data` table can be directly accessed via, for
+    example, ``self.concentration``. Additionally, all methods available to
+    ``pandas.DataFrame`` should be accessible as normal, including: indexing
+    (``.iloc``, ``.loc``) and assignment (``.at``, ``.where``).
+
     The class can be instantiated independent of a
     :class:`~proffilo.station.Station` object, but is usually assigned as an
-    attribute of a Station during regular use.
+    attribute of a Station object during regular use.
+
+    Examples
+    --------
 
     .. note::
 
