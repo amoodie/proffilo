@@ -69,7 +69,7 @@ napoleon_use_rtype = True
 # Autosummary / Automodapi settings
 autosummary_generate = True
 automodapi_inheritance_diagram = False
-autodoc_default_flags = ['members','inherited-members']
+autodoc_default_flags = ['members','inherited-members','no-private-members']
 
 # img math
 # imgmath_latex_preamble = '\\usepackage{fouriernc}' # newtxsf, mathptmx

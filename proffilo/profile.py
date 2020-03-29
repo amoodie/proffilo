@@ -143,6 +143,7 @@ class BaseProfile(object):
             plt.show(block=block)
         else:
             plt.show()
+        plt.close()
 
 
 
