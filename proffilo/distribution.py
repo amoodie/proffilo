@@ -147,9 +147,43 @@ class Distribution(object):
         if isinstance(plt, ImportError):
             raise plt
 
-    def show_distribution(self, cumulative=False, block=False, savestr=None, **kwargs):
-        """
-        Show the distribution
+    def show_distribution(self, cumulative=False, log_x=False, block=False,
+                          save_str=None, return_ax=False, **kwargs):
+        """Show the distribution.
+
+        Parameters
+        ----------
+
+        cumulative : `bool`, optional
+            Whether to to plot as cumulative distributions or probability
+            distributions. Default is ``True`` (cumulative).
+
+        log_x : `bool`, optional
+            Whether to plot the x-axis in logarithmic space. Deafault is
+            ``False`` (linear).
+
+        block : `bool`, optional
+            Whether to pause script execution by showing the plot.
+            I.e., the ``block`` argument in matplotlib's ``plt.show()``.
+
+        save_str : `str`, optional
+            String to save the output file. 
+
+        return_ax : `bool`, optional
+            Whether to return the axis object; default is ``False``. If
+            ``True``, `block` and `save_str` are ignored and the
+            axis is returned before saving or showing.
+
+        **kwargs : optional
+            Any arbitrary ``matplotlib.pyplot.plot()`` keyword arguments for
+            the plot specification. Note that these specs are passed to all lines.
+
+        Returns
+        -------
+
+        ax : `matplotlib.pyplot.axes`
+            The axis object. Only provided if parameter ``return_ax=True``.
+        
         """
         self._mpl_check()
 
@@ -166,14 +200,19 @@ class Distribution(object):
         ax.plot(self.bin, __dist, **kwargs)
         ax.set_xlabel(xlab)
         ax.set_ylabel(ylab)
+        if log_x:
+            ax.set_xscale('log')
         if cumulative:
             ax.set_ylim(ylim)
-        if savestr:
-            fig.savefig(savestr)
-            plt.show(block=block)
+        if return_ax:
+            return ax
         else:
-            plt.show()
-        plt.close()
+            if save_str:
+                fig.savefig(save_str)
+                plt.show(block=block)
+            else:
+                plt.show()
+            plt.close()
 
 
 class NormalDistribution(Distribution):

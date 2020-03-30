@@ -244,10 +244,36 @@ class Station(object):
         if isinstance(plt, ImportError):
             raise plt
 
-    def show_velocity(self, block=False, savestr=None, **kwargs):
+    def show_velocity(self, block=False, save_str=None, return_ax=False, **kwargs):
         """Plot velocity profiles.
 
         Plot the velocity profiles.
+
+        Parameters
+        ----------
+
+        block : `bool`, optional
+            Whether to pause script execution by showing the plot.
+            I.e., the ``block`` argument in matplotlib's ``plt.show()``.
+
+        save_str : `str`, optional
+            String to save the output file. 
+
+        return_ax : `bool`, optional
+            Whether to return the axis object; default is ``False``. If
+            ``True``, `block` and `save_str` are ignored and the
+            axis is returned before saving or showing.
+
+        **kwargs : optional
+            Any arbitrary ``matplotlib.pyplot.plot()`` keyword arguments for
+            the plot specification. Note that these specs are passed to all lines.
+
+        Returns
+        -------
+
+        ax : `matplotlib.pyplot.axes`
+            The axis object. Only provided if parameter ``return_ax=True``.
+        
         """
         self._mpl_check()
         assert len(self._velocity_profiles) > 0, 'No velocity profiles found.'
@@ -263,9 +289,12 @@ class Station(object):
         ax.legend(self._velocity_profiles.keys())
         ax.set_xlabel(xlab)
         ax.set_ylabel(ylab)
-        if savestr:
-            fig.savefig(savestr)
-            plt.show(block=block)
+        if return_ax:
+            return ax
         else:
-            plt.show()
-        plt.close()
+            if save_str:
+                fig.savefig(save_str)
+                plt.show(block=block)
+            else:
+                plt.show(block=block)
+            plt.close()

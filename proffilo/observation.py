@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import abc
 
+from .distribution import Distribution
+
 try:
     import matplotlib.pyplot as plt # Optional dependency
     from matplotlib import cm
@@ -176,10 +178,8 @@ class BaseObservations(object):
         if isinstance(plt, ImportError):
             raise plt
 
-    def show_profile(self, block=False, savestr=None, **kwargs):
+    def show_profile(self, block=False, save_str=None, return_ax=False, **kwargs):
         """Show observations as a profile.
-
-        .. note:: This function requires `matplotlib`.
 
         Parameters
         ----------
@@ -188,18 +188,24 @@ class BaseObservations(object):
             Whether to pause script execution by showing the plot.
             I.e., the ``block`` argument in matplotlib's ``plt.show()``.
 
-        savestr : `str`, optional
-            String to save the output file. If given ``block`` is
-            set to False.
+        save_str : `str`, optional
+            String to save the output file. 
+
+        return_ax : `bool`, optional
+            Whether to return the axis objectl; default is ``False``. If
+            ``True``, `block` and `save_str` are ignored and the
+            axis is returned before saving or showing.
 
         **kwargs : optional
             Any arbitrary ``matplotlib.pyplot.plot()`` keyword arguments for
-            the plot specification.
+            the plot specification. Note that these specs are passed to all lines.
 
         Returns
         -------
 
-        None
+        ax : `matplotlib.pyplot.axes`
+            The axis object. Only provided if parameter ``return_ax=True``.
+
         """
         self._mpl_check()
 
@@ -214,12 +220,15 @@ class BaseObservations(object):
                                   linestyle=linestyle, **kwargs)
         ax.set_xlabel(xlab)
         ax.set_ylabel(ylab)
-        if savestr:
-            fig.savefig(savestr)
-            plt.show(block=block)
+        if return_ax:
+            return ax
         else:
-            plt.show()
-        plt.close()
+            if save_str:
+                fig.savefig(save_str)
+                plt.show(block=block)
+            else:
+                plt.show(block=block)
+            plt.close()
 
 
 
@@ -318,23 +327,46 @@ class SedimentConcentrationObservations(BaseObservations):
         """
         return self._distribution
 
-    def show_distributions(self, cumulative=False, block=False, savestr=None, **kwargs):
+    def show_distributions(self, style='normalized', cumulative=True, log_x=False, 
+                           block=False, save_str=None, return_ax=False, **kwargs):
         """Show the grain-size distributions of the observation.
         
         Show the dirtubutions in a plot. 
 
-        .. note:: This function requires `matplotlib`.
+        ..note::
+
+            A legend entry is generated for samples that do not have
+            distributions. 
 
         Parameters
         ----------
+
+        style : `str`, optional
+            Main directive for how to style the plot. Supported options are
+            ``normalized`` and ``actual``. ``normalized`` (default) will plot
+            each distribution, colored categorically by the unique normalized
+            elevations of observations. ``actual`` shows the distributions,
+            colored and labeled as values elevation above the bed (m).
+
+        cumulative : `bool`, optional
+            Whether to to plot as cumulative distributions or probability
+            distributions. Default is ``True`` (cumulative).
+
+        log_x : `bool`, optional
+            Whether to plot the x-axis in logarithmic space. Deafault is
+            ``False`` (linear).
 
         block : `bool`, optional
             Whether to pause script execution by showing the plot.
             I.e., the ``block`` argument in matplotlib's ``plt.show()``.
 
-        savestr : `str`, optional
-            String to save the output file. If given ``block`` is
-            set to False.
+        save_str : `str`, optional
+            String to save the output file. 
+
+        return_ax : `bool`, optional
+            Whether to return the axis object; default is ``False``. If
+            ``True``, `block` and `save_str` are ignored and the
+            axis is returned before saving or showing.
 
         **kwargs : optional
             Any arbitrary ``matplotlib.pyplot.plot()`` keyword arguments for
@@ -343,7 +375,9 @@ class SedimentConcentrationObservations(BaseObservations):
         Returns
         -------
 
-        None
+        ax : `matplotlib.pyplot.axes`
+            The axis object. Only provided if parameter ``return_ax=True``.
+
         """
         self._mpl_check()
 
@@ -353,27 +387,70 @@ class SedimentConcentrationObservations(BaseObservations):
             ylim = (0, 100)
         else:
             ylab = kwargs.pop('ylabel', 'percent (%)')
+        _ = kwargs.pop('color', 'r')
 
-        colmap = kwargs.pop('colmap', 'viridis')
-        colormap = cm.get_cmap(colmap, 32)
+        unique_list, unique_index, unique_inverse = np.unique(self.elevation, return_index=True, return_inverse=True)
+
+        colormap = kwargs.pop('colormap', 'viridis')
+        _contcolormap = cm.get_cmap(colormap, 32)
+        _disccolormap = cm.get_cmap(colormap, len(unique_list))
+
+        def _setup_normalized_style():
+            self.col_func = lambda idx: _disccolormap(unique_inverse[idx] / len(unique_list))
+            self.lab_func = lambda idx: str(np.around(self.z_norm[idx], 2))
+            self.leg_func = lambda: _unique_proxies()
+            self.leg_title = 'normalized\nelevation'
+
+        def _setup_actual_style():
+            # self.col_func = lambda idx: _contcolormap(self.z[idx] / self.flow_depth)
+            self.col_func = lambda idx: _disccolormap(unique_inverse[idx] / len(unique_list))
+            self.lab_func = lambda idx: str(np.around(self.z[idx], 2))
+            self.leg_func = lambda: ax.get_legend_handles_labels()[0]
+            self.leg_title = 'elevation (m)'
+
+        def _unique_proxies():
+            """Remove redundant legend entries, and sort legend items.
+            """
+            _proxies = []
+            sort_idx = np.argsort(unique_index)
+            for i in range(len(self.elevation)):
+                __out, = ax.plot([], [], color=self.col_func(i), label=self.lab_func(i))
+                if i in unique_index:
+                    _proxies.append(__out)
+            return [_proxies[v] for v in sort_idx]
+
+        if style == 'normalized':
+            self._attribute_checker(['flow_depth'])
+            _setup_normalized_style()
+        else:
+            _setup_actual_style()
 
         fig, ax = plt.subplots()
-
         for d, ddist in enumerate(self.distribution):
-            if cumulative:
-                __dist = ddist.cumulative_dist
-            else:
-                __dist = ddist.dist
-            ax.plot(ddist.bin, __dist, **kwargs)
+            if issubclass(type(ddist), Distribution): # in case there is missing data
+                if cumulative:
+                    __dist = ddist.cumulative_dist
+                else:
+                    __dist = ddist.dist
+                ax.plot(ddist.bin, __dist, color=self.col_func(d), label=self.lab_func(d), **kwargs)
     
+        ax.legend(handles=self.leg_func(), title=self.leg_title)
+
+        if log_x:
+            ax.set_xscale('log')
+        if cumulative:
+            ax.set_ylim(ylim)
         ax.set_xlabel(xlab)
         ax.set_ylabel(ylab)
-        if savestr:
-            fig.savefig(savestr)
-            plt.show(block=block)
+        if return_ax:
+            return ax
         else:
-            plt.show()
-        plt.close()
+            if save_str:
+                fig.savefig(save_str)
+                plt.show(block=block)
+            else:
+                plt.show(block=block)
+            plt.close()
 
 
 
