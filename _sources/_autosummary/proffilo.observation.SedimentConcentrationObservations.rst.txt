@@ -1,0 +1,39 @@
+proffilo.observation.SedimentConcentrationObservations
+======================================================
+
+.. currentmodule:: proffilo.observation
+
+.. autoclass:: SedimentConcentrationObservations
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SedimentConcentrationObservations.__init__
+      ~SedimentConcentrationObservations.add_observation
+      ~SedimentConcentrationObservations.show_distributions
+      ~SedimentConcentrationObservations.show_profile
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SedimentConcentrationObservations.concentration
+      ~SedimentConcentrationObservations.data
+      ~SedimentConcentrationObservations.distribution
+      ~SedimentConcentrationObservations.elevation
+      ~SedimentConcentrationObservations.flow_depth
+      ~SedimentConcentrationObservations.type
+      ~SedimentConcentrationObservations.val
+      ~SedimentConcentrationObservations.z
+      ~SedimentConcentrationObservations.z_norm
+   
+   

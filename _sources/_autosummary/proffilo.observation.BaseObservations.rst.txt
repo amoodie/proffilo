@@ -1,0 +1,32 @@
+proffilo.observation.BaseObservations
+=====================================
+
+.. currentmodule:: proffilo.observation
+
+.. autoclass:: BaseObservations
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BaseObservations.__init__
+      ~BaseObservations.show_profile
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BaseObservations.data
+      ~BaseObservations.flow_depth
+      ~BaseObservations.type
+      ~BaseObservations.val
+   
+   

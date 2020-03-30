@@ -1,0 +1,36 @@
+proffilo.observation.VelocityObservations
+=========================================
+
+.. currentmodule:: proffilo.observation
+
+.. autoclass:: VelocityObservations
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~VelocityObservations.__init__
+      ~VelocityObservations.add_observation
+      ~VelocityObservations.show_profile
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~VelocityObservations.data
+      ~VelocityObservations.elevation
+      ~VelocityObservations.flow_depth
+      ~VelocityObservations.type
+      ~VelocityObservations.val
+      ~VelocityObservations.z
+      ~VelocityObservations.z_norm
+   
+   

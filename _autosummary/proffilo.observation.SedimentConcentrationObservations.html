@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>proffilo.observation.SedimentConcentrationObservations &#8212; Proffilo 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="proffilo.observation.VelocityObservations" href="proffilo.observation.VelocityObservations.html" />
+    <link rel="prev" title="proffilo.observation.BaseObservations" href="proffilo.observation.BaseObservations.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="proffilo.observation.VelocityObservations.html" title="proffilo.observation.VelocityObservations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="proffilo.observation.BaseObservations.html" title="proffilo.observation.BaseObservations"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/observation/index.html" accesskey="U">Data observation classes</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="proffilo.observation.BaseObservations.html"
+                        title="previous chapter">proffilo.observation.BaseObservations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="proffilo.observation.VelocityObservations.html"
+                        title="next chapter">proffilo.observation.VelocityObservations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/proffilo.observation.SedimentConcentrationObservations.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="proffilo-observation-sedimentconcentrationobservations">
+<h1>proffilo.observation.SedimentConcentrationObservations<a class="headerlink" href="#proffilo-observation-sedimentconcentrationobservations" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="proffilo.observation.SedimentConcentrationObservations">
+<em class="property">class </em><code class="sig-prename descclassname">proffilo.observation.</code><code class="sig-name descname">SedimentConcentrationObservations</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">flow_depth=None</em>, <em class="sig-param">connection={}</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sediment concentration observations collection.</p>
+<p>This class provides organization to concentration observations associated
+with a station. The class provides a number of convenient functions that
+help streamline organization and access of data associated with
+concentration observations. In particular, there are several routines for
+extracting information from <code class="xref py py-class docutils literal notranslate"><span class="pre">Distributon</span></code>
+objects associated with concentration measurements.</p>
+<p>Notably, this class overloads <a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.__getattr__" title="proffilo.observation.SedimentConcentrationObservations.__getattr__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__getattr__</span></code></a>, such that column names
+defined in the <a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.data" title="proffilo.observation.SedimentConcentrationObservations.data"><code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code></a> table can be directly accessed via, for
+example, <code class="docutils literal notranslate"><span class="pre">self.concentration</span></code>. Additionally, all methods available to
+<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> should be accessible as normal, including: indexing
+(<code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, <code class="docutils literal notranslate"><span class="pre">.loc</span></code>) and assignment (<code class="docutils literal notranslate"><span class="pre">.at</span></code>, <code class="docutils literal notranslate"><span class="pre">.where</span></code>).</p>
+<p>The class can be instantiated independent of a
+<a class="reference internal" href="proffilo.station.Station.html#proffilo.station.Station" title="proffilo.station.Station"><code class="xref py py-class docutils literal notranslate"><span class="pre">Station</span></code></a> object, but is usually assigned as an
+attribute of a Station object during regular use.</p>
+<p class="rubric">Examples</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no support for indexing with original column labels via
+<code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> methods. For example, if an Observation class is
+initialized with the <code class="docutils literal notranslate"><span class="pre">'concentration'</span></code> field as <code class="docutils literal notranslate"><span class="pre">'conc'</span></code> in
+the dataframe, but linked via <code class="docutils literal notranslate"><span class="pre">connection</span></code>, you cannot do
+<code class="docutils literal notranslate"><span class="pre">stn.conc_obs.loc[:,'conc']</span></code>.</p>
+</div>
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">flow_depth=None</em>, <em class="sig-param">connection={}</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a SedimentConcentrationObservations object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<cite>pandas.DataFrame</cite>, optional) – An optional DataFrame with the concentration data preconfigured.
+If not supplied, this field is set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, and data can be
+filled in via the <code class="xref py py-attr docutils literal notranslate"><span class="pre">add_observation</span></code> method.</p></li>
+<li><p><strong>depth</strong> (<em>flow</em>) – Flow depth [m]. Some functionality may be limited if this is not supplied.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.__init__" title="proffilo.observation.SedimentConcentrationObservations.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([data, flow_depth, connection])</p></td>
+<td><p>Initialize a SedimentConcentrationObservations object.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_observation</span></code>(var)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.show_distributions" title="proffilo.observation.SedimentConcentrationObservations.show_distributions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_distributions</span></code></a>([style, cumulative, …])</p></td>
+<td><p>Show the grain-size distributions of the observation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.show_profile" title="proffilo.observation.SedimentConcentrationObservations.show_profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_profile</span></code></a>([block, save_str, return_ax])</p></td>
+<td><p>Show observations as a profile.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.concentration" title="proffilo.observation.SedimentConcentrationObservations.concentration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">concentration</span></code></a></p></td>
+<td><p>Observation concentrations [-].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.data" title="proffilo.observation.SedimentConcentrationObservations.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<td><p>Pandas dataframe object containing the observation data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.distribution" title="proffilo.observation.SedimentConcentrationObservations.distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distribution</span></code></a></p></td>
+<td><p>Observation grain-size distributions [<a class="reference internal" href="proffilo.distribution.Distribution.html#proffilo.distribution.Distribution" title="proffilo.distribution.Distribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Distribution</span></code></a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.elevation" title="proffilo.observation.SedimentConcentrationObservations.elevation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">elevation</span></code></a></p></td>
+<td><p>Observation elevations above the bed [m].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.flow_depth" title="proffilo.observation.SedimentConcentrationObservations.flow_depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flow_depth</span></code></a></p></td>
+<td><p>Flow depth [m].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.type" title="proffilo.observation.SedimentConcentrationObservations.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<td><p>type of Observation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.val" title="proffilo.observation.SedimentConcentrationObservations.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val</span></code></a></p></td>
+<td><p>Value of Observation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.z" title="proffilo.observation.SedimentConcentrationObservations.z"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z</span></code></a></p></td>
+<td><p>Observation elevations above the bed [m].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.z_norm" title="proffilo.observation.SedimentConcentrationObservations.z_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">z_norm</span></code></a></p></td>
+<td><p>Normalized observation elevation.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.__getattr__">
+<code class="sig-name descname">__getattr__</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.__getattr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make columns and DataFrame methods directly accessible.</p>
+<p>This overloads <code class="docutils literal notranslate"><span class="pre">__getattr__</span></code> to look for undefined attributes as
+columns in <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.data</span></code>. If found, returns the column values as an <cite>ndarray</cite>.</p>
+<p>If not found, look for it as a method of <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>. If found, execute.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.concentration">
+<em class="property">property </em><code class="sig-name descname">concentration</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.concentration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Observation concentrations [-].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.data">
+<em class="property">property </em><code class="sig-name descname">data</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pandas dataframe object containing the observation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>pd.DataFrame</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.distribution">
+<em class="property">property </em><code class="sig-name descname">distribution</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Observation grain-size distributions [<a class="reference internal" href="proffilo.distribution.Distribution.html#proffilo.distribution.Distribution" title="proffilo.distribution.Distribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Distribution</span></code></a>].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.elevation">
+<em class="property">property </em><code class="sig-name descname">elevation</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.elevation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Observation elevations above the bed [m].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.flow_depth">
+<em class="property">property </em><code class="sig-name descname">flow_depth</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.flow_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flow depth [m].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.show_distributions">
+<code class="sig-name descname">show_distributions</code><span class="sig-paren">(</span><em class="sig-param">style='normalized'</em>, <em class="sig-param">cumulative=True</em>, <em class="sig-param">log_x=False</em>, <em class="sig-param">block=False</em>, <em class="sig-param">save_str=None</em>, <em class="sig-param">return_ax=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.show_distributions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the grain-size distributions of the observation.</p>
+<p>Show the dirtubutions in a plot.</p>
+<p>..note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">legend</span> <span class="n">entry</span> <span class="ow">is</span> <span class="n">generated</span> <span class="k">for</span> <span class="n">samples</span> <span class="n">that</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span>
+<span class="n">distributions</span><span class="o">.</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>style</strong> (<cite>str</cite>, optional) – Main directive for how to style the plot. Supported options are
+<code class="docutils literal notranslate"><span class="pre">normalized</span></code> and <code class="docutils literal notranslate"><span class="pre">actual</span></code>. <code class="docutils literal notranslate"><span class="pre">normalized</span></code> (default) will plot
+each distribution, colored categorically by the unique normalized
+elevations of observations. <code class="docutils literal notranslate"><span class="pre">actual</span></code> shows the distributions,
+colored and labeled as values elevation above the bed (m).</p></li>
+<li><p><strong>cumulative</strong> (<cite>bool</cite>, optional) – Whether to to plot as cumulative distributions or probability
+distributions. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code> (cumulative).</p></li>
+<li><p><strong>log_x</strong> (<cite>bool</cite>, optional) – Whether to plot the x-axis in logarithmic space. Deafault is
+<code class="docutils literal notranslate"><span class="pre">False</span></code> (linear).</p></li>
+<li><p><strong>block</strong> (<cite>bool</cite>, optional) – Whether to pause script execution by showing the plot.
+I.e., the <code class="docutils literal notranslate"><span class="pre">block</span></code> argument in matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p></li>
+<li><p><strong>save_str</strong> (<cite>str</cite>, optional) – String to save the output file.</p></li>
+<li><p><strong>return_ax</strong> (<cite>bool</cite>, optional) – Whether to return the axis object; default is <code class="docutils literal notranslate"><span class="pre">False</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, <cite>block</cite> and <cite>save_str</cite> are ignored and the
+axis is returned before saving or showing.</p></li>
+<li><p><strong>**kwargs</strong> (<em>optional</em>) – Any arbitrary <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code> keyword arguments for
+the plot specification. Note that these specs are passed to all lines.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – The axis object. Only provided if parameter <code class="docutils literal notranslate"><span class="pre">return_ax=True</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>matplotlib.pyplot.axes</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.show_profile">
+<code class="sig-name descname">show_profile</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">save_str=None</em>, <em class="sig-param">return_ax=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.show_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show observations as a profile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<cite>bool</cite>, optional) – Whether to pause script execution by showing the plot.
+I.e., the <code class="docutils literal notranslate"><span class="pre">block</span></code> argument in matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p></li>
+<li><p><strong>save_str</strong> (<cite>str</cite>, optional) – String to save the output file.</p></li>
+<li><p><strong>return_ax</strong> (<cite>bool</cite>, optional) – Whether to return the axis objectl; default is <code class="docutils literal notranslate"><span class="pre">False</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, <cite>block</cite> and <cite>save_str</cite> are ignored and the
+axis is returned before saving or showing.</p></li>
+<li><p><strong>**kwargs</strong> (<em>optional</em>) – Any arbitrary <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code> keyword arguments for
+the plot specification. Note that these specs are passed to all lines.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – The axis object. Only provided if parameter <code class="docutils literal notranslate"><span class="pre">return_ax=True</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>matplotlib.pyplot.axes</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.type">
+<em class="property">abstract property </em><code class="sig-name descname">type</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>type of Observation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.val">
+<em class="property">abstract property </em><code class="sig-name descname">val</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of Observation.</p>
+<p>Should be overwritten to be whatever is most intuitve for the observation type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.z">
+<em class="property">property </em><code class="sig-name descname">z</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Observation elevations above the bed [m].</p>
+<p>Alias to <a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.elevation" title="proffilo.observation.SedimentConcentrationObservations.elevation"><code class="xref py py-attr docutils literal notranslate"><span class="pre">elevation</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.SedimentConcentrationObservations.z_norm">
+<em class="property">property </em><code class="sig-name descname">z_norm</code><a class="headerlink" href="#proffilo.observation.SedimentConcentrationObservations.z_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized observation elevation.</p>
+<p>Elevation value is normalized into the interval [0,1], by dividing
+<a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.z" title="proffilo.observation.SedimentConcentrationObservations.z"><code class="xref py py-attr docutils literal notranslate"><span class="pre">z</span></code></a> by the <a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.flow_depth" title="proffilo.observation.SedimentConcentrationObservations.flow_depth"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flow_depth</span></code></a>. If <a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.flow_depth" title="proffilo.observation.SedimentConcentrationObservations.flow_depth"><code class="xref py py-attr docutils literal notranslate"><span class="pre">flow_depth</span></code></a> is type
+<cite>None</cite>, <a class="reference internal" href="#proffilo.observation.SedimentConcentrationObservations.z_norm" title="proffilo.observation.SedimentConcentrationObservations.z_norm"><code class="xref py py-attr docutils literal notranslate"><span class="pre">z_norm</span></code></a> raises <cite>RuntimeError</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>ndarray</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="proffilo.observation.VelocityObservations.html" title="proffilo.observation.VelocityObservations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="proffilo.observation.BaseObservations.html" title="proffilo.observation.BaseObservations"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/observation/index.html" >Data observation classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2020, Andrew J. Moodie.
+    Created using <a href="http://www.sphinx-doc.org/">Sphinx</a> 2.4.4. Theme is <a href="http://github.com/vimalkvn/solar-theme">Solar</a>.
+    </div>
+  </body>
+</html>

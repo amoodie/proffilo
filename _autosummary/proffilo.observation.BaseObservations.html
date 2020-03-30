@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>proffilo.observation.BaseObservations &#8212; Proffilo 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="proffilo.observation.SedimentConcentrationObservations" href="proffilo.observation.SedimentConcentrationObservations.html" />
+    <link rel="prev" title="Data observation classes" href="../reference/observation/index.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="proffilo.observation.SedimentConcentrationObservations.html" title="proffilo.observation.SedimentConcentrationObservations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../reference/observation/index.html" title="Data observation classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/observation/index.html" accesskey="U">Data observation classes</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../reference/observation/index.html"
+                        title="previous chapter">Data observation classes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="proffilo.observation.SedimentConcentrationObservations.html"
+                        title="next chapter">proffilo.observation.SedimentConcentrationObservations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_autosummary/proffilo.observation.BaseObservations.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="proffilo-observation-baseobservations">
+<h1>proffilo.observation.BaseObservations<a class="headerlink" href="#proffilo-observation-baseobservations" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="proffilo.observation.BaseObservations">
+<em class="property">class </em><code class="sig-prename descclassname">proffilo.observation.</code><code class="sig-name descname">BaseObservations</code><span class="sig-paren">(</span><em class="sig-param">columns</em>, <em class="sig-param">data=None</em>, <em class="sig-param">flow_depth=None</em>, <em class="sig-param">connection={}</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.BaseObservations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base observations collection class.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This class should <strong>never</strong> be instantiated directly.</p>
+</div>
+<dl class="method">
+<dt id="proffilo.observation.BaseObservations.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">columns</em>, <em class="sig-param">data=None</em>, <em class="sig-param">flow_depth=None</em>, <em class="sig-param">connection={}</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.BaseObservations.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the BaseObservations object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<cite>float</cite>) – Elevation of observation above the bed [m]. Must be greater than
+zero and less than the flow depth, if provided.</p></li>
+<li><p><strong>depth</strong> (<em>flow</em>) – Flow depth [None]. If not provided, some methods may be unavailable.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.BaseObservations.__init__" title="proffilo.observation.BaseObservations.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(columns[, data, flow_depth, connection])</p></td>
+<td><p>Initialize the BaseObservations object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.BaseObservations.show_profile" title="proffilo.observation.BaseObservations.show_profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_profile</span></code></a>([block, save_str, return_ax])</p></td>
+<td><p>Show observations as a profile.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.BaseObservations.data" title="proffilo.observation.BaseObservations.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data</span></code></a></p></td>
+<td><p>Pandas dataframe object containing the observation data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.BaseObservations.flow_depth" title="proffilo.observation.BaseObservations.flow_depth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flow_depth</span></code></a></p></td>
+<td><p>Flow depth [m].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proffilo.observation.BaseObservations.type" title="proffilo.observation.BaseObservations.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a></p></td>
+<td><p>type of Observation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.observation.BaseObservations.val" title="proffilo.observation.BaseObservations.val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val</span></code></a></p></td>
+<td><p>Value of Observation.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="proffilo.observation.BaseObservations.__getattr__">
+<code class="sig-name descname">__getattr__</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.BaseObservations.__getattr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make columns and DataFrame methods directly accessible.</p>
+<p>This overloads <code class="docutils literal notranslate"><span class="pre">__getattr__</span></code> to look for undefined attributes as
+columns in <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.data</span></code>. If found, returns the column values as an <cite>ndarray</cite>.</p>
+<p>If not found, look for it as a method of <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>. If found, execute.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.BaseObservations.data">
+<em class="property">property </em><code class="sig-name descname">data</code><a class="headerlink" href="#proffilo.observation.BaseObservations.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pandas dataframe object containing the observation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>pd.DataFrame</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.BaseObservations.flow_depth">
+<em class="property">property </em><code class="sig-name descname">flow_depth</code><a class="headerlink" href="#proffilo.observation.BaseObservations.flow_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flow depth [m].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>float</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.BaseObservations.show_profile">
+<code class="sig-name descname">show_profile</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">save_str=None</em>, <em class="sig-param">return_ax=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.observation.BaseObservations.show_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show observations as a profile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<cite>bool</cite>, optional) – Whether to pause script execution by showing the plot.
+I.e., the <code class="docutils literal notranslate"><span class="pre">block</span></code> argument in matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p></li>
+<li><p><strong>save_str</strong> (<cite>str</cite>, optional) – String to save the output file.</p></li>
+<li><p><strong>return_ax</strong> (<cite>bool</cite>, optional) – Whether to return the axis objectl; default is <code class="docutils literal notranslate"><span class="pre">False</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, <cite>block</cite> and <cite>save_str</cite> are ignored and the
+axis is returned before saving or showing.</p></li>
+<li><p><strong>**kwargs</strong> (<em>optional</em>) – Any arbitrary <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code> keyword arguments for
+the plot specification. Note that these specs are passed to all lines.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ax</strong> – The axis object. Only provided if parameter <code class="docutils literal notranslate"><span class="pre">return_ax=True</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>matplotlib.pyplot.axes</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.BaseObservations.type">
+<em class="property">abstract property </em><code class="sig-name descname">type</code><a class="headerlink" href="#proffilo.observation.BaseObservations.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>type of Observation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proffilo.observation.BaseObservations.val">
+<em class="property">abstract property </em><code class="sig-name descname">val</code><a class="headerlink" href="#proffilo.observation.BaseObservations.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of Observation.</p>
+<p>Should be overwritten to be whatever is most intuitve for the observation type.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="proffilo.observation.SedimentConcentrationObservations.html" title="proffilo.observation.SedimentConcentrationObservations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../reference/observation/index.html" title="Data observation classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../reference/index.html" >API reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference/observation/index.html" >Data observation classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2020, Andrew J. Moodie.
+    Created using <a href="http://www.sphinx-doc.org/">Sphinx</a> 2.4.4. Theme is <a href="http://github.com/vimalkvn/solar-theme">Solar</a>.
+    </div>
+  </body>
+</html>

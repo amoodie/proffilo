@@ -1,0 +1,34 @@
+proffilo.distribution.NormalDistribution
+========================================
+
+.. currentmodule:: proffilo.distribution
+
+.. autoclass:: NormalDistribution
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~NormalDistribution.__init__
+      ~NormalDistribution.d
+      ~NormalDistribution.show_distribution
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~NormalDistribution.bin
+      ~NormalDistribution.cumulative_dist
+      ~NormalDistribution.data
+      ~NormalDistribution.dist
+      ~NormalDistribution.units
+   
+   

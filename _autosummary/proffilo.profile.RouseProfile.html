@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <title>proffilo.profile.RouseProfile &#8212; Proffilo 0.1.0 documentation</title>
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/solar.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -15,8 +15,9 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Velocity functions" href="../reference/velocity/index.html" />
-    <link rel="prev" title="proffilo.profile.LogLawProfile" href="proffilo.profile.LogLawProfile.html" /> 
+    <link rel="next" title="Data observation classes" href="../reference/observation/index.html" />
+    <link rel="prev" title="proffilo.profile.LogLawProfile" href="proffilo.profile.LogLawProfile.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+<link href="../_static/solarized-dark.css" rel="stylesheet">
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,7 +29,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../reference/velocity/index.html" title="Velocity functions"
+          <a href="../reference/observation/index.html" title="Data observation classes"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="proffilo.profile.LogLawProfile.html" title="proffilo.profile.LogLawProfile"
@@ -44,8 +45,8 @@
   <p class="topless"><a href="proffilo.profile.LogLawProfile.html"
                         title="previous chapter">proffilo.profile.LogLawProfile</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../reference/velocity/index.html"
-                        title="next chapter">Velocity functions</a></p>
+  <p class="topless"><a href="../reference/observation/index.html"
+                        title="next chapter">Data observation classes</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -76,25 +77,23 @@
 <dl class="class">
 <dt id="proffilo.profile.RouseProfile">
 <em class="property">class </em><code class="sig-prename descclassname">proffilo.profile.</code><code class="sig-name descname">RouseProfile</code><a class="headerlink" href="#proffilo.profile.RouseProfile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Docstring</p>
+<dd><p>Rouse concentration profile model.</p>
 <p>The Rouse formula is given by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>frac{{c}_i}{{c}_{bi}} = left[ frac{(H-z)/z}{(H-b)/b} right] ^{Z_{Ri}}</p>
-</div></blockquote>
-<p>And the Rouse number, given by:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">math</span><span class="p">::</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>Z_{Ri} = frac{w_{si}}{alpha kappa u_*}</p>
-</div></blockquote>
-<dl class="attribute">
-<dt>
-<code class="sig-name descname">Another strng.</code></dt>
-<dd></dd></dl>
+<div class="math">
+<p><img src="../_images/math/a215a781470ae1894987f7a1ae3db4aabaadb805.png" alt="\frac{{c}_i}{{c}_{bi}} = \left[ \frac{(H-z)/z}{(H-b)/b} \right] ^{Z_{Ri}}"/></p>
+</div><p>where the Rouse number :math`Z_{Ri}` is given by:</p>
+<div class="math">
+<p><img src="../_images/math/58d34ee96583e507a6db4a926f91816038be0caf.png" alt="Z_{Ri} = \frac{w_{si}}{\alpha \kappa u_*}"/></p>
+</div><dl class="attribute">
+<dt id="proffilo.profile.RouseProfile.attribute">
+<code class="sig-name descname">attribute</code><a class="headerlink" href="#proffilo.profile.RouseProfile.attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Another string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="proffilo.profile.RouseProfile.__init__">
@@ -127,7 +126,7 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">concentration_rouse</span></code>(flow_depth, b, cb, Rou)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.show_profile" title="proffilo.profile.RouseProfile.show_profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_profile</span></code></a>([block, savestr])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#proffilo.profile.RouseProfile.show_profile" title="proffilo.profile.RouseProfile.show_profile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_profile</span></code></a>([block, save_str, return_ax])</p></td>
 <td><p>Show the profile.</p></td>
 </tr>
 </tbody>
@@ -159,29 +158,27 @@
 
 <dl class="method">
 <dt id="proffilo.profile.RouseProfile.show_profile">
-<code class="sig-name descname">show_profile</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">savestr=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.RouseProfile.show_profile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">show_profile</code><span class="sig-paren">(</span><em class="sig-param">block=False</em>, <em class="sig-param">save_str=None</em>, <em class="sig-param">return_ax=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proffilo.profile.RouseProfile.show_profile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the profile.</p>
 <p>Show the profile in a plot.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This function requires <cite>matplotlib</cite>.</p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>block</strong> (<cite>bool</cite>, optional) – Whether to pause script execution by showing the plot.
 I.e., the <code class="docutils literal notranslate"><span class="pre">block</span></code> argument in matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p></li>
-<li><p><strong>savestr</strong> (<cite>str</cite>, optional) – String to save the output file. If given <code class="docutils literal notranslate"><span class="pre">block</span></code> is
-set to False.</p></li>
+<li><p><strong>save_str</strong> (<cite>str</cite>, optional) – String to save the output file.</p></li>
+<li><p><strong>return_ax</strong> (<cite>bool</cite>, optional) – Whether to return the axis object; default is <code class="docutils literal notranslate"><span class="pre">False</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, <cite>block</cite> and <cite>save_str</cite> are ignored and the
+axis is returned before saving or showing.</p></li>
 <li><p><strong>**kwargs</strong> (<em>optional</em>) – Any arbitrary <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code> keyword arguments for
-the plot specification.</p></li>
+the plot specification. Note that these specs are passed to all lines.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p><strong>ax</strong> – The axis object. Only provided if parameter <code class="docutils literal notranslate"><span class="pre">return_ax=True</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
+<dd class="field-odd"><p><cite>matplotlib.pyplot.axes</cite></p>
 </dd>
 </dl>
 </dd></dl>
@@ -237,7 +234,7 @@ the plot specification.</p></li>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../reference/velocity/index.html" title="Velocity functions"
+          <a href="../reference/observation/index.html" title="Data observation classes"
              >next</a> |</li>
         <li class="right" >
           <a href="proffilo.profile.LogLawProfile.html" title="proffilo.profile.LogLawProfile"
@@ -247,9 +244,9 @@ the plot specification.</p></li>
           <li class="nav-item nav-item-2"><a href="../reference/profile/index.html" >Vertical profile classes</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Andrew J. Moodie.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    <div class="footer">
+        &copy; Copyright 2020, Andrew J. Moodie.
+    Created using <a href="http://www.sphinx-doc.org/">Sphinx</a> 2.4.4. Theme is <a href="http://github.com/vimalkvn/solar-theme">Solar</a>.
     </div>
   </body>
 </html>

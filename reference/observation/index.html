@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Concentration functions &#8212; Proffilo 0.1.0 documentation</title>
+    <title>Data observation classes &#8212; Proffilo 0.1.0 documentation</title>
     <link rel="stylesheet" href="../../_static/solar.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -15,8 +15,8 @@
     <script src="../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="proffilo.concentration.convert_mass_to_volumetric" href="../../_autosummary/proffilo.concentration.convert_mass_to_volumetric.html" />
-    <link rel="prev" title="proffilo.velocity.compute_velocity_loglaw" href="../../_autosummary/proffilo.velocity.compute_velocity_loglaw.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="next" title="proffilo.observation.BaseObservations" href="../../_autosummary/proffilo.observation.BaseObservations.html" />
+    <link rel="prev" title="proffilo.profile.RouseProfile" href="../../_autosummary/proffilo.profile.RouseProfile.html" /><link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 <link href="../../_static/solarized-dark.css" rel="stylesheet">
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -29,10 +29,10 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../../_autosummary/proffilo.concentration.convert_mass_to_volumetric.html" title="proffilo.concentration.convert_mass_to_volumetric"
+          <a href="../../_autosummary/proffilo.observation.BaseObservations.html" title="proffilo.observation.BaseObservations"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../../_autosummary/proffilo.velocity.compute_velocity_loglaw.html" title="proffilo.velocity.compute_velocity_loglaw"
+          <a href="../../_autosummary/proffilo.profile.RouseProfile.html" title="proffilo.profile.RouseProfile"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">API reference</a> &#187;</li> 
@@ -41,15 +41,15 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../../_autosummary/proffilo.velocity.compute_velocity_loglaw.html"
-                        title="previous chapter">proffilo.velocity.compute_velocity_loglaw</a></p>
+  <p class="topless"><a href="../../_autosummary/proffilo.profile.RouseProfile.html"
+                        title="previous chapter">proffilo.profile.RouseProfile</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../../_autosummary/proffilo.concentration.convert_mass_to_volumetric.html"
-                        title="next chapter">proffilo.concentration.convert_mass_to_volumetric</a></p>
+  <p class="topless"><a href="../../_autosummary/proffilo.observation.BaseObservations.html"
+                        title="next chapter">proffilo.observation.BaseObservations</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/reference/concentration/index.rst.txt"
+      <li><a href="../../_sources/reference/observation/index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -71,21 +71,24 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="concentration-functions">
-<h1>Concentration functions<a class="headerlink" href="#concentration-functions" title="Permalink to this headline">¶</a></h1>
-<p>The package makes available functions relating to sediment concentration.</p>
-<p>The functions are defined in <code class="docutils literal notranslate"><span class="pre">proffilo.concentration</span></code>.</p>
+  <div class="section" id="data-observation-classes">
+<h1>Data observation classes<a class="headerlink" href="#data-observation-classes" title="Permalink to this headline">¶</a></h1>
+<p>The package makes available functions relating to observations. This includes sediment concentration, velocity, chemical observations.</p>
+<p>The functions are defined in <code class="docutils literal notranslate"><span class="pre">proffilo.observation</span></code>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../_autosummary/proffilo.concentration.convert_mass_to_volumetric.html#proffilo.concentration.convert_mass_to_volumetric" title="proffilo.concentration.convert_mass_to_volumetric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_mass_to_volumetric</span></code></a>(mass_conc[, density])</p></td>
-<td><p>Convert mass concentration to volumetric concentration.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../_autosummary/proffilo.observation.BaseObservations.html#proffilo.observation.BaseObservations" title="proffilo.observation.BaseObservations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseObservations</span></code></a>(columns[, data, …])</p></td>
+<td><p>Base observations collection class.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../_autosummary/proffilo.concentration.convert_volumetric_to_mass.html#proffilo.concentration.convert_volumetric_to_mass" title="proffilo.concentration.convert_volumetric_to_mass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_volumetric_to_mass</span></code></a>(vol_conc[, density])</p></td>
-<td><p>Convert volumetric concentration to mass concentration.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../../_autosummary/proffilo.observation.SedimentConcentrationObservations.html#proffilo.observation.SedimentConcentrationObservations" title="proffilo.observation.SedimentConcentrationObservations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SedimentConcentrationObservations</span></code></a>([data, …])</p></td>
+<td><p>Sediment concentration observations collection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../_autosummary/proffilo.observation.VelocityObservations.html#proffilo.observation.VelocityObservations" title="proffilo.observation.VelocityObservations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VelocityObservations</span></code></a>([data, flow_depth, …])</p></td>
+<td><p>Velocity concentration observations collection.</p></td>
 </tr>
 </tbody>
 </table>
@@ -107,10 +110,10 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../../_autosummary/proffilo.concentration.convert_mass_to_volumetric.html" title="proffilo.concentration.convert_mass_to_volumetric"
+          <a href="../../_autosummary/proffilo.observation.BaseObservations.html" title="proffilo.observation.BaseObservations"
              >next</a> |</li>
         <li class="right" >
-          <a href="../../_autosummary/proffilo.velocity.compute_velocity_loglaw.html" title="proffilo.velocity.compute_velocity_loglaw"
+          <a href="../../_autosummary/proffilo.profile.RouseProfile.html" title="proffilo.profile.RouseProfile"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Proffilo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >API reference</a> &#187;</li> 
