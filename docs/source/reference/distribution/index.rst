@@ -18,6 +18,8 @@ Distribution classes
 	:toctree: ../../_autosummary
 
 	Distribution
+	NormalDistribution
+	LogNormalDistribution
 
 
 Distribution functions

@@ -94,19 +94,18 @@ class BaseProfile(object):
         log_list = [value for value in att_dict.values()]
         log_form = [value for string, value in zip(log_list, att_dict.keys())  if not string]
         if not all(log_list):
-            raise RuntimeError('Required attribute(s) not assigned: '+str(log_form))
+            raise RuntimeError('required attribute(s) not assigned: '+str(log_form)+
+                               ' for object: '+str(type(self)))
         return att_dict
 
     def _mpl_check(self):
         if isinstance(plt, ImportError):
             raise plt
 
-    def show_profile(self, block=False, savestr=None, **kwargs):
+    def show_profile(self, block=False, save_str=None, return_ax=False, **kwargs):
         """Show the profile.
         
         Show the profile in a plot. 
-
-        .. note:: This function requires `matplotlib`.
 
         Parameters
         ----------
@@ -115,18 +114,24 @@ class BaseProfile(object):
             Whether to pause script execution by showing the plot.
             I.e., the ``block`` argument in matplotlib's ``plt.show()``.
 
-        savestr : `str`, optional
-            String to save the output file. If given ``block`` is
-            set to False.
+        save_str : `str`, optional
+            String to save the output file. 
+
+        return_ax : `bool`, optional
+            Whether to return the axis object; default is ``False``. If
+            ``True``, `block` and `save_str` are ignored and the
+            axis is returned before saving or showing.
 
         **kwargs : optional
             Any arbitrary ``matplotlib.pyplot.plot()`` keyword arguments for
-            the plot specification.
+            the plot specification. Note that these specs are passed to all lines.
 
         Returns
         -------
 
-        None
+        ax : `matplotlib.pyplot.axes`
+            The axis object. Only provided if parameter ``return_ax=True``.
+
         """
         self._mpl_check()
 
@@ -137,11 +142,15 @@ class BaseProfile(object):
         ax.plot(self.val, self.z, **kwargs)
         ax.set_xlabel(xlab)
         ax.set_ylabel(ylab)
-        if savestr:
-            fig.savefig(savestr)
-            plt.show(block=block)
+        if return_ax:
+            return ax
         else:
-            plt.show()
+            if save_str:
+                fig.savefig(save_str)
+                plt.show(block=block)
+            else:
+                plt.show(block=block)
+            plt.close()
 
 
 
@@ -275,15 +284,15 @@ class LogLawProfile(BaseProfile):
 
 
 class RouseProfile(BaseProfile):
-    """Docstring
+    """Rouse concentration profile model.
 
-    The Rouse formula is given by::
+    The Rouse formula is given by:
 
     .. math::
 
         \\frac{{c}_i}{{c}_{bi}} = \\left[ \\frac{(H-z)/z}{(H-b)/b} \\right] ^{Z_{Ri}}
-        
-    And the Rouse number, given by::
+    
+    where the Rouse number :math`Z_{Ri}` is given by:
 
     .. math::
     
@@ -292,7 +301,8 @@ class RouseProfile(BaseProfile):
     Attributes
     ----------
 
-    Another strng.
+    attribute : `str`
+        Another string.
     
     """
     def __init__(self):
@@ -300,8 +310,8 @@ class RouseProfile(BaseProfile):
         pass
 
     def concentration_rouse(z, flow_depth, b, cb, Rou):
+        pass
         # nEvalPts = 51;
         # modelEvalZs = np.linspace(flow_depth*0.05, flowDepth, nEvalPts)
         # modelEvalCs = cb .* ( ((flowDepth-modelEvalZs)./modelEvalZs) ./ Hbb ) .^ Rou
         # return modelEvalZs, modelEvalCs
-        pass

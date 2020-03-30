@@ -1,4 +1,5 @@
-import numpy as np 
+import numpy as np
+from scipy import stats
 
 try:
     import matplotlib.pyplot as plt # Optional dependency
@@ -113,6 +114,8 @@ class Distribution(object):
         elif self._units in ['phi', r'\phi']:
             raise NotImplementedError('Other units not functional. Submit a PR!')
             self.display_units = r'$\phi$'
+        else:
+            raise ValueError('Bad units supplied: %s' % self._units)
 
 
     @property
@@ -144,9 +147,43 @@ class Distribution(object):
         if isinstance(plt, ImportError):
             raise plt
 
-    def show_distribution(self, cumulative=False, block=False, savestr=None, **kwargs):
-        """
-        Show the distribution
+    def show_distribution(self, cumulative=False, log_x=False, block=False,
+                          save_str=None, return_ax=False, **kwargs):
+        """Show the distribution.
+
+        Parameters
+        ----------
+
+        cumulative : `bool`, optional
+            Whether to to plot as cumulative distributions or probability
+            distributions. Default is ``True`` (cumulative).
+
+        log_x : `bool`, optional
+            Whether to plot the x-axis in logarithmic space. Deafault is
+            ``False`` (linear).
+
+        block : `bool`, optional
+            Whether to pause script execution by showing the plot.
+            I.e., the ``block`` argument in matplotlib's ``plt.show()``.
+
+        save_str : `str`, optional
+            String to save the output file. 
+
+        return_ax : `bool`, optional
+            Whether to return the axis object; default is ``False``. If
+            ``True``, `block` and `save_str` are ignored and the
+            axis is returned before saving or showing.
+
+        **kwargs : optional
+            Any arbitrary ``matplotlib.pyplot.plot()`` keyword arguments for
+            the plot specification. Note that these specs are passed to all lines.
+
+        Returns
+        -------
+
+        ax : `matplotlib.pyplot.axes`
+            The axis object. Only provided if parameter ``return_ax=True``.
+        
         """
         self._mpl_check()
 
@@ -163,19 +200,73 @@ class Distribution(object):
         ax.plot(self.bin, __dist, **kwargs)
         ax.set_xlabel(xlab)
         ax.set_ylabel(ylab)
+        if log_x:
+            ax.set_xscale('log')
         if cumulative:
             ax.set_ylim(ylim)
-        if savestr:
-            fig.savefig(savestr)
-            plt.show(block=block)
+        if return_ax:
+            return ax
         else:
-            plt.show()
+            if save_str:
+                fig.savefig(save_str)
+                plt.show(block=block)
+            else:
+                plt.show()
+            plt.close()
+
+
+class NormalDistribution(Distribution):
+    """Normally distributed grain-size distribution.
+
+    A basic normally distributed grain-size distribution with defined mean and
+    standard deviation. While this distribution is not really realistic, it is
+    sometimes helpful. It can be readily instantiated with just two
+    parameters, and so can be helpful in debugging and testing.
+
+    .. note::
+
+        Values less than zero are truncated, but the distribution is not
+        renormalized. That is, the distributions are not *truly* truncated in
+        [0,:math:`\\inf`).
+    """
+    def __init__(self, mean=300, sigma=80, x=None, **kwargs):
+        """
+        """
+        scale_lim = mean + (5*sigma)
+        if x:
+            _x = x
+        else:
+            _x = np.linspace(0, scale_lim, 50)
+        _dist = stats.norm(loc=mean, scale=sigma)
+        _draws = _dist.rvs(size=10000)
+        _vals, _ = np.histogram(_draws, bins=_x)
+        _arr = (_vals / np.nansum(_vals))*100
+
+        super().__init__(np.vstack((_x[1:], _arr)).T, **kwargs)
 
 
 
-## ## ## ## ## ## ##
-##   FUNCTIONS    ##
-## ## ## ## ## ## ##
+class LogNormalDistribution(Distribution):
+    """Lognormally distributed grain-size distribution.
+
+    .. warning::
+
+        THIS CLASS HAS NOT BEEN IMPLEMENTED!
+
+    """
+    def __init__(self, x=None, **kwargs):
+        """
+        """
+        raise NotImplementedError
+        if x:
+            _x = x
+        else:
+            _x = np.linspace(0, 5000, 50)
+        _arr = None
+
+        super().__init__(np.vstack((_x[1:], _arr)).T, **kwargs)
+
+
 
 def distribution_stats():
     """Statistics of a distribution.

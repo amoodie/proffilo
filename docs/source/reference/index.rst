@@ -14,6 +14,7 @@ methods.
    station/index
    distribution/index
    profile/index
+   observation/index
    velocity/index
    concentration/index
    entrain/index
